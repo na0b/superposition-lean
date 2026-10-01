@@ -1,0 +1,26 @@
+\begin{lemma}[Slices of compactly contained sets, second coordinate]
+Let $(\mathbf X,d_{\mathbf X})$, $(\mathbf Y,d_{\mathbf Y})$ be metric spaces and equip $\mathbf X\times\mathbf Y$ with the $\ell^1$ metric $d_1((x_1,y_1),(x_2,y_2))=d_{\mathbf X}(x_1,x_2)+d_{\mathbf Y}(y_1,y_2)$. Let $\mathcal U\subseteq\mathbf X$, $\mathcal V\subseteq\mathbf Y$, and let $\mathcal O\subseteq\mathbf X\times\mathbf Y$ be open and bounded (for $d_1$) with $\overline{\mathcal O}$ compact and $\overline{\mathcal O}\subseteq\mathcal U\times\mathcal V$. Fix $\hat x\in\mathbf X$ and set
+\[
+\mathcal O_{\mathbf Y}=\{y\in\mathbf Y:(\hat x,y)\in\mathcal O\}.
+\]
+Then $\mathcal O_{\mathbf Y}$ is open and bounded in $\mathbf Y$, $\overline{\mathcal O_{\mathbf Y}}$ is compact, $\overline{\mathcal O_{\mathbf Y}}\subseteq\mathcal V$, $\overline{\mathcal O_{\mathbf Y}}\subseteq\{y:(\hat x,y)\in\overline{\mathcal O}\}$, and $\partial\mathcal O_{\mathbf Y}\subseteq\{y:(\hat x,y)\in\partial\mathcal O\}$.
+\end{lemma}
+\begin{proof}
+Let $\iota:\mathbf Y\to\mathbf X\times\mathbf Y$, $\iota(y)=(\hat x,y)$, so that $\mathcal O_{\mathbf Y}=\iota^{-1}(\mathcal O)$. By the definition of $d_1$,
+\[
+d_1(\iota(y),\iota(y'))=d_{\mathbf X}(\hat x,\hat x)+d_{\mathbf Y}(y,y')=d_{\mathbf Y}(y,y'),
+\]
+so $\iota$ is an isometry, in particular continuous. Moreover $\pi_2\circ\iota=\mathrm{id}_{\mathbf Y}$ for the continuous projection $\pi_2(x,y)=y$.
+
+\emph{Open.} $\mathcal O_{\mathbf Y}=\iota^{-1}(\mathcal O)$ is the preimage of an open set under a continuous map.
+
+\emph{Bounded.} Since $\mathcal O$ is bounded there is $C$ with $d_1(z,z')\le C$ for all $z,z'\in\mathcal O$. For $y,y'\in\mathcal O_{\mathbf Y}$ we have $\iota(y),\iota(y')\in\mathcal O$, hence $d_{\mathbf Y}(y,y')=d_1(\iota(y),\iota(y'))\le C$.
+
+\emph{Closure inside the slice of $\overline{\mathcal O}$.} $\iota^{-1}(\overline{\mathcal O})$ is closed (continuity of $\iota$) and contains $\iota^{-1}(\mathcal O)$, hence $\overline{\mathcal O_{\mathbf Y}}\subseteq\iota^{-1}(\overline{\mathcal O})=\{y:(\hat x,y)\in\overline{\mathcal O}\}$.
+
+\emph{Closure inside $\mathcal V$.} If $y\in\overline{\mathcal O_{\mathbf Y}}$ then $(\hat x,y)\in\overline{\mathcal O}\subseteq\mathcal U\times\mathcal V$ by the previous step, so $y\in\mathcal V$.
+
+\emph{Compact closure.} Since $\pi_2\circ\iota=\mathrm{id}$ with $\pi_2,\iota$ continuous and $\mathbf X\times\mathbf Y$ Hausdorff, $\iota$ is a closed embedding: its image $\{(\hat x,y)\}=\{z:\iota(\pi_2 z)=z\}$ is closed (as the equalizer of two continuous maps into a Hausdorff space) and $\iota$ is a homeomorphism onto it with inverse $\pi_2$. The preimage of a compact set under a closed embedding is compact, so $\iota^{-1}(\overline{\mathcal O})$ is compact. The set $\overline{\mathcal O_{\mathbf Y}}$ is a closed subset of it, hence compact.
+
+\emph{Boundary.} Let $y\in\partial\mathcal O_{\mathbf Y}$. Then $y\in\overline{\mathcal O_{\mathbf Y}}$, so $\iota(y)\in\overline{\mathcal O}$ as shown above. Also $y\notin\operatorname{int}\mathcal O_{\mathbf Y}=\mathcal O_{\mathbf Y}$ (it is open), so $\iota(y)\notin\mathcal O=\operatorname{int}\mathcal O$. Hence $\iota(y)=(\hat x,y)\in\overline{\mathcal O}\setminus\operatorname{int}\mathcal O=\partial\mathcal O$.
+\end{proof}

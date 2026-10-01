@@ -1,0 +1,15 @@
+\begin{definition}[Comparison with cones from above]
+Let $(\mathbf X, d_{\mathbf X})$ be a metric space, $\Omega\subseteq\mathbf X$, and let $u$ be a real-valued function defined (at least) on $\Omega$; only the values of $u$ on $\Omega$ matter below. We say that $u$ \emph{satisfies comparison with cones from above in $\Omega$} (with respect to $d_{\mathbf X}$) if both of the following hold.
+\begin{enumerate}
+\item $u$ is locally bounded from above in $\Omega$: for every $x\in\Omega$ there is a neighbourhood $t$ of $x$ in $\mathbf X$ such that $u$ is bounded from above on $t\cap\Omega$.
+\item For any $\hat x\in\Omega$, any $c\in\mathbb R$, any $\kappa\ge 0$ and any bounded open set $\mathcal O\subset\subset\Omega$ (that is, $\mathcal O\subseteq \mathbf X$ is open and bounded, its closure $\overline{\mathcal O}$ is compact, and $\overline{\mathcal O}\subseteq\Omega$) with $\hat x\in\Omega\setminus\mathcal O$, the condition
+\[
+u\le \phi\quad\text{on }\partial\mathcal O
+\]
+for the cone function $\phi=c+\kappa\, d_{\mathbf X}(\hat x,\cdot)$ implies that
+\[
+u\le\phi\quad\text{in }\overline{\mathcal O}.
+\]
+\end{enumerate}
+In the paper this notion is used when $(\mathbf X,d_{\mathbf X})$ is a proper geodesic space and $\Omega\subsetneq\mathbf X$ is a domain; these standing assumptions are imposed as explicit hypotheses in the theorems that use this definition.
+\end{definition}

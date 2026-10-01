@@ -1,0 +1,10 @@
+\begin{lemma}[Continuity and local upper bound of the disjoint sum]
+Let $(\mathbf X,d_{\mathbf X})$, $(\mathbf Y,d_{\mathbf Y})$ be metric spaces and equip $\mathbf X\times\mathbf Y$ with the $\ell^1$ metric $d_1$. Let $\mathcal U\subseteq\mathbf X$, $\mathcal V\subseteq\mathbf Y$, $\mathcal W=\mathcal U\times\mathcal V$, and let $u:\mathbf X\to\mathbb R$, $v:\mathbf Y\to\mathbb R$ be such that $u$ is continuous on $\mathcal U$ and $v$ is continuous on $\mathcal V$ (as functions restricted to these sets). Assume $u$ is locally bounded from above in $\mathcal U$ (every $x\in\mathcal U$ has a neighbourhood $s$ in $\mathbf X$ such that $u$ is bounded above on $s\cap\mathcal U$) and $v$ is locally bounded from above in $\mathcal V$ (likewise). Then the disjoint sum $w(x,y)=u(x)+v(y)$ is continuous on $\mathcal W$, and $w$ is locally bounded from above in $\mathcal W$: every $z\in\mathcal W$ has a neighbourhood $t$ in $\mathbf X\times\mathbf Y$ such that $w$ is bounded above on $t\cap\mathcal W$.
+\end{lemma}
+\begin{proof}
+The projections $\pi_1(x,y)=x$ and $\pi_2(x,y)=y$ are continuous on $(\mathbf X\times\mathbf Y,d_1)$ (they are $1$-Lipschitz: $d_{\mathbf X}(x_1,x_2)\le d_1((x_1,y_1),(x_2,y_2))$, and likewise for $\pi_2$).
+
+\emph{Continuity.} $\pi_1$ maps $\mathcal W$ into $\mathcal U$ and $u$ is continuous on $\mathcal U$, so $u\circ\pi_1$ is continuous on $\mathcal W$; similarly $v\circ\pi_2$ is continuous on $\mathcal W$ since $\pi_2(\mathcal W)\subseteq\mathcal V$. Their sum $w$ is continuous on $\mathcal W$.
+
+\emph{Local upper bound.} Let $z=(x,y)\in\mathcal W$, so $x\in\mathcal U$, $y\in\mathcal V$. Choose a neighbourhood $s$ of $x$ and $A\in\mathbb R$ with $u\le A$ on $s\cap\mathcal U$, and a neighbourhood $r$ of $y$ and $B\in\mathbb R$ with $v\le B$ on $r\cap\mathcal V$. Let $t=\pi_1^{-1}(s)\cap\pi_2^{-1}(r)$; by continuity of $\pi_1,\pi_2$ at $z$ this is a neighbourhood of $z$. If $p=(p_1,p_2)\in t\cap\mathcal W$ then $p_1\in s\cap\mathcal U$ and $p_2\in r\cap\mathcal V$, whence $w(p)=u(p_1)+v(p_2)\le A+B$. So $w$ is bounded above by $A+B$ on $t\cap\mathcal W$.
+\end{proof}

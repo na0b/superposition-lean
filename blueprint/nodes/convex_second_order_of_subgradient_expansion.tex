@@ -1,0 +1,34 @@
+\begin{lemma}[Second-order expansion from a first-order expansion of subgradients]
+Let $n\ge0$, let $F:\mathbb R^n\to\mathbb R$ be convex on $\mathbb R^n$, and call $q$ a subgradient of $F$ at $y$ if $F(y)+\langle q,w-y\rangle\le F(w)$ for all $w\in\mathbb R^n$. Let $x,a\in\mathbb R^n$ and let $A_0$ be a real $n\times n$ matrix (not necessarily symmetric) such that for every $\kappa>0$ there is $\tau>0$ with
+\[
+|q-a-A_0(y-x)|\le\kappa|y-x|\qquad\text{whenever }|y-x|<\tau\text{ and }q\text{ is a subgradient of }F\text{ at }y .
+\]
+Let $A=\frac12(A_0+A_0^{T})$. Then $A$ is symmetric and
+\[
+F(y)-F(x)-\langle a,y-x\rangle-\tfrac12\langle A(y-x),y-x\rangle=o(|y-x|^2)\qquad\text{as }y\to x,
+\]
+i.e.\ for every $\kappa>0$ the absolute value of the left-hand side is at most $\kappa|y-x|^2$ for all $y$ in a neighbourhood of $x$.
+\end{lemma}
+\begin{proof}
+$A^T=\frac12(A_0^T+A_0)=A$, so $A$ is symmetric. For every $h$, $\langle A_0^Th,h\rangle=\langle h,A_0h\rangle$, hence $\langle Ah,h\rangle=\langle A_0h,h\rangle$; it therefore suffices to prove the expansion with $A_0$ in place of $A$.
+
+Fix $\kappa>0$ and let $\tau>0$ be as in the hypothesis. Let $y$ with $|y-x|<\tau$ and put $h=y-x$. Let $N\ge1$, $t_k=k/N$ and $y_k=x+t_kh$ for $k=0,\dots,N$; then $y_0=x$, $y_N=y$ and $|y_k-x|=t_k|h|<\tau$. By \noderef{convex_exists_subgradient} choose a subgradient $q_k$ of $F$ at $y_k$ for each $k$, and write $q_k=a+t_kA_0h+r_k$; by hypothesis $|r_k|\le\kappa t_k|h|\le\kappa|h|$.
+
+\emph{Two-sided increments.} Since $y_{k+1}-y_k=h/N$, the subgradient inequality at $y_k$ (evaluated at $y_{k+1}$) and at $y_{k+1}$ (evaluated at $y_k$) give
+\[
+\tfrac1N\langle q_k,h\rangle\le F(y_{k+1})-F(y_k)\le\tfrac1N\langle q_{k+1},h\rangle\qquad(0\le k\le N-1).
+\]
+Summing over $k$,
+\[
+\frac1N\sum_{k=0}^{N-1}\langle q_k,h\rangle\le F(y)-F(x)\le\frac1N\sum_{k=1}^{N}\langle q_k,h\rangle .
+\]
+\emph{Evaluation of the sums.} $\langle q_k,h\rangle=\langle a,h\rangle+t_k\langle A_0h,h\rangle+\langle r_k,h\rangle$ with $|\langle r_k,h\rangle|\le\kappa|h|^2$; also $\frac1N\sum_{k=0}^{N-1}t_k=\frac{N-1}{2N}$ and $\frac1N\sum_{k=1}^{N}t_k=\frac{N+1}{2N}$. Hence
+\[
+\langle a,h\rangle+\tfrac{N-1}{2N}\langle A_0h,h\rangle-\kappa|h|^2\le F(y)-F(x)\le\langle a,h\rangle+\tfrac{N+1}{2N}\langle A_0h,h\rangle+\kappa|h|^2 .
+\]
+Letting $N\to\infty$,
+\[
+\bigl|F(y)-F(x)-\langle a,h\rangle-\tfrac12\langle A_0h,h\rangle\bigr|\le\kappa|h|^2 .
+\]
+This holds for all $y\in B(x,\tau)$, a neighbourhood of $x$. As $\kappa>0$ was arbitrary and $\langle A_0h,h\rangle=\langle Ah,h\rangle$, the claimed $o(|y-x|^2)$ expansion follows.
+\end{proof}

@@ -1,0 +1,44 @@
+\begin{lemma}[Jensen's lemma]
+Let $n\ge0$, $W:\mathbb R^n\to\mathbb R$ and $C\ge0$ be such that $\Phi(x)=W(x)+\frac C2|x|^2$ is convex on $\mathbb R^n$. Let $x_0,x_*\in\mathbb R^n$, $r>0$, $\delta>0$ with $x_*\in\overline B(x_0,r)$, and assume
+\[
+W(y)+2\delta r<W(x_*)\qquad\text{for all }y\text{ with }|y-x_0|=r .
+\]
+Let $K_\delta$ be the set of $x\in B(x_0,r)$ for which there is $p\in\mathbb R^n$ with $|p|\le\delta$ and
+\[
+W(y)+\langle p,y\rangle\le W(x)+\langle p,x\rangle\qquad\text{for all }y\in\overline B(x_0,r).
+\]
+Then $K_\delta$ has positive Lebesgue measure: $\mathrm{vol}(K_\delta)>0$.
+\end{lemma}
+\begin{proof}
+\emph{Step 1 ($W$ is continuous).} For every $y_0$, \noderef{convex_locally_lipschitz}(i) applied to the convex $\Phi$ with centre $y_0$ and radius $1$ gives $|\Phi(y)-\Phi(y_0)|\le\Lambda|y-y_0|$ for $|y-y_0|\le1$; so $\Phi$ is continuous, and so is $W=\Phi-\frac C2|\cdot|^2$.
+
+\emph{Step 2 (every small $p$ is attained in $K_\delta$).} Let $|p|\le\delta$. The continuous function $W+\langle p,\cdot\rangle$ attains its maximum over the compact nonempty ball $\overline B(x_0,r)$ at some $x_p$. If $|x_p-x_0|=r$, then using $|\langle p,v\rangle|\le\delta|v|$, the hypothesis, and $|x_*-x_0|\le r$,
+\[
+W(x_p)+\langle p,x_p\rangle\le W(x_p)+\delta r+\langle p,x_0\rangle<W(x_*)-\delta r+\langle p,x_0\rangle\le W(x_*)+\langle p,x_*\rangle,
+\]
+contradicting maximality (as $x_*\in\overline B(x_0,r)$). Hence $x_p\in B(x_0,r)$ and $x_p\in K_\delta$ with witness $p$.
+
+\emph{Step 3 (two-sided bounds and uniqueness of $p$).} Let $x\in K_\delta$ with witness $p$. For $y\in\overline B(x_0,r)$, $W(y)\le W(x)-\langle p,y-x\rangle$; adding $\frac C2|y|^2=\frac C2|x|^2+C\langle x,y-x\rangle+\frac C2|y-x|^2$,
+\[
+\Phi(y)\le\Phi(x)+\langle Cx-p,y-x\rangle+\tfrac C2|y-x|^2\qquad(y\in\overline B(x_0,r)). \tag{U}
+\]
+By \noderef{convex_exists_subgradient} there is $q$ with $\Phi(y)\ge\Phi(x)+\langle q,y-x\rangle$ for all $y$. Let $e$ be a unit vector. As $x$ lies in the open ball, $x\pm te\in\overline B(x_0,r)$ for small $t>0$, and (U) with the lower bound gives $\pm t\langle q-(Cx-p),e\rangle\le\frac C2t^2$; dividing by $t$ and letting $t\to0^+$ yields $\langle q-(Cx-p),e\rangle=0$. Hence $q=Cx-p$, i.e.\ $p=Cx-q$. Since $q$ was fixed before $p$, the witness $p$ of $x$ is unique; denote it $\pi(x)$, and put $s_x=Cx-\pi(x)$. Then
+\[
+\Phi(y)\ge\Phi(x)+\langle s_x,y-x\rangle\ \ (y\in\mathbb R^n),\qquad \Phi(y)\le\Phi(x)+\langle s_x,y-x\rangle+\tfrac C2|y-x|^2\ \ (y\in\overline B(x_0,r)). \tag{L,U}
+\]
+By Step 2 and uniqueness, $\pi(x_p)=p$ for every $|p|\le\delta$, so $\overline B(0,\delta)\subseteq\pi(K_\delta)$.
+
+\emph{Step 4 (local Lipschitz bound).} Let $\theta>0$ and $x_1,x_2\in K_\delta$ with $|x_i-x_0|\le r-\theta$ and $d=|x_1-x_2|\le\theta/2$. Write $s_i=s_{x_i}$. We show $|s_1-s_2|\le2Cd$. If $d=0$ or $s_1=s_2$ this is clear; otherwise let $e=(s_2-s_1)/|s_2-s_1|$, $t=2d\le\theta$ and $y=x_1+te\in\overline B(x_0,r)$. By (L) at $x_2$ and (U) at $x_1$: $\Phi(x_2)+\langle s_2,y-x_2\rangle\le\Phi(y)\le\Phi(x_1)+\langle s_1,y-x_1\rangle+\frac C2t^2$. By (L) at $x_1$ evaluated at $x_2$: $\Phi(x_2)\ge\Phi(x_1)+\langle s_1,x_2-x_1\rangle$. Combining, $\langle s_2-s_1,y-x_2\rangle\le\frac C2t^2$. Since $y-x_2=(x_1-x_2)+te$,
+\[
+t|s_2-s_1|=\langle s_2-s_1,te\rangle\le\tfrac C2t^2+|s_2-s_1|\,d,\qquad\text{so}\qquad (t-d)|s_2-s_1|\le\tfrac C2t^2 ,
+\]
+and with $t=2d$ this is $|s_2-s_1|\le2Cd$. Consequently $|\pi(x_1)-\pi(x_2)|=|C(x_1-x_2)-(s_1-s_2)|\le3C|x_1-x_2|$.
+
+\emph{Step 5 (conclusion).} Define $g:\mathbb R^n\to\mathbb R^n$ by $g=\pi$ on $K_\delta$ and $g=0$ elsewhere. Fix an enumeration $(c_j)_{j\ge1}$ of the points of $\mathbb R^n$ with rational coordinates. For integers $m,j\ge1$ let
+\[
+T_{m,j}=K_\delta\cap\overline B(x_0,r-\tfrac1m)\cap\overline B(c_j,\tfrac1{4m}) .
+\]
+Any two points of $T_{m,j}$ are at distance $\le\frac1{2m}$, so Step 4 with $\theta=\frac1m$ shows $|g(x_1)-g(x_2)|\le3C|x_1-x_2|$ for $x_1,x_2\in T_{m,j}$. Every $x\in K_\delta$ satisfies $|x-x_0|<r$, hence $|x-x_0|\le r-\frac1m$ for some $m$, and $x\in\overline B(c_j,\frac1{4m})$ for some $j$ by density of rational points; so $K_\delta=\bigcup_{m,j}T_{m,j}$ and $\pi(K_\delta)=\bigcup_{m,j}g(T_{m,j})$.
+
+Suppose $\mathrm{vol}(K_\delta)=0$. Then $\mathrm{vol}(T_{m,j})=0$, so by \noderef{lipschitz_image_null} (with $f=g$, $s=T_{m,j}$, constant $3C$) $\mathrm{vol}(g(T_{m,j}))=0$ for all $m,j$, and by countable subadditivity $\mathrm{vol}(\pi(K_\delta))=0$. But $\pi(K_\delta)\supseteq\overline B(0,\delta)$ by Step 3, and $\mathrm{vol}(\overline B(0,\delta))>0$ since $\delta>0$. This contradiction shows $\mathrm{vol}(K_\delta)>0$.
+\end{proof}

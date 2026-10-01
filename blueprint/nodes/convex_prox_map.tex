@@ -1,0 +1,29 @@
+\begin{lemma}[The proximal map of a convex function]
+Let $n\ge0$ and let $F:\mathbb R^n\to\mathbb R$ be convex on $\mathbb R^n$. Call $q\in\mathbb R^n$ a subgradient of $F$ at $x$ if $F(x)+\langle q,w-x\rangle\le F(w)$ for all $w\in\mathbb R^n$. Then there is a map $P:\mathbb R^n\to\mathbb R^n$ such that
+\begin{enumerate}
+\item[(i)] for every $z$, $z-P(z)$ is a subgradient of $F$ at $P(z)$;
+\item[(ii)] $P$ is $1$-Lipschitz: $|P(z)-P(z')|\le|z-z'|$ for all $z,z'$;
+\item[(iii)] if $q$ is a subgradient of $F$ at $x$, then $P(x+q)=x$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\emph{Monotonicity.} If $q$ is a subgradient at $x$ and $q'$ a subgradient at $x'$, then adding $F(x')\ge F(x)+\langle q,x'-x\rangle$ and $F(x)\ge F(x')+\langle q',x-x'\rangle$ gives $\langle q-q',x-x'\rangle\ge0$.
+
+\emph{Key estimate.} Suppose $z-x$ is a subgradient at $x$ and $z'-x'$ is a subgradient at $x'$. By monotonicity $\langle (z-x)-(z'-x'),x-x'\rangle\ge0$, i.e.\ $\langle z-z',x-x'\rangle\ge|x-x'|^2$. By Cauchy--Schwarz $|x-x'|^2\le|z-z'|\,|x-x'|$, hence $|x-x'|\le|z-z'|$ (trivially if $x=x'$). \hfill(K)
+
+\emph{Existence of a point $x$ with $z-x$ a subgradient at $x$.} Fix $z$ and let $G(y)=F(y)+\frac12|y-z|^2$. By \noderef{convex_exists_subgradient} there is a subgradient $q_0$ of $F$ at $z$, so $F(y)\ge F(z)+\langle q_0,y-z\rangle\ge F(z)-|q_0|\,|y-z|$ and
+\[
+G(y)\ge G(z)+|y-z|\bigl(\tfrac12|y-z|-|q_0|\bigr)>G(z)\qquad\text{whenever }|y-z|>2|q_0| .
+\]
+$F$ is continuous: for every $y_0$, \noderef{convex_locally_lipschitz}(i) with centre $y_0$ and radius $1$ gives $\Lambda$ with $|F(y)-F(y_0)|\le\Lambda|y-y_0|$ for $|y-y_0|\le1$. So $G$ is continuous and attains its minimum over the compact nonempty ball $\overline B(z,2|q_0|)$ at some $x$; since $G(x)\le G(z)<G(y)$ for $y$ outside that ball, $x$ minimizes $G$ over all of $\mathbb R^n$. Now let $w\in\mathbb R^n$ and $t\in(0,1)$. By minimality and convexity of $F$,
+\[
+F(x)+\tfrac12|x-z|^2\le F(x+t(w-x))+\tfrac12|x-z+t(w-x)|^2\le(1-t)F(x)+tF(w)+\tfrac12|x-z|^2+t\langle x-z,w-x\rangle+\tfrac{t^2}2|w-x|^2 .
+\]
+Cancelling and dividing by $t$: $0\le F(w)-F(x)+\langle x-z,w-x\rangle+\frac t2|w-x|^2$. Letting $t\to0^+$ gives $F(x)+\langle z-x,w-x\rangle\le F(w)$. So $z-x$ is a subgradient at $x$.
+
+\emph{Definition of $P$ and (i).} For each $z$ choose such an $x$ and call it $P(z)$; (i) holds by construction.
+
+\emph{(ii).} Apply (K) to $x=P(z)$, $x'=P(z')$ (admissible by (i)): $|P(z)-P(z')|\le|z-z'|$.
+
+\emph{(iii).} Let $q$ be a subgradient at $x$ and $z=x+q$. Then $z-x=q$ is a subgradient at $x$, and by (i) $z-P(z)$ is a subgradient at $P(z)$. Applying (K) with $z'=z$ gives $|x-P(z)|\le0$, i.e.\ $P(x+q)=x$.
+\end{proof}

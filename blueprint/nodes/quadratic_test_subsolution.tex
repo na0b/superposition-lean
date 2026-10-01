@@ -1,0 +1,32 @@
+\begin{lemma}[Quadratic test functions]
+Let $n\ge0$, $\Omega\subseteq\mathbb R^n$, $L:\mathbb R^n\times\mathbb R^{n\times n}\to\mathbb R$ and $f,u:\mathbb R^n\to\mathbb R$, and assume that $u$ is a viscosity subsolution of $L(\nabla u,\nabla^2u)=f$ in $\Omega$ in the sense of \noderef{IsViscositySubsolution}. Let $z\in\Omega$, $c\in\mathbb R$, $a\in\mathbb R^n$ and let $A$ be a symmetric real $n\times n$ matrix. Put
+\[
+P(y)=c+\langle a,y-z\rangle+\tfrac12\langle A(y-z),y-z\rangle\qquad(y\in\mathbb R^n),
+\]
+where $A(y-z)$ is the matrix--vector product. If $u-P$ attains a local maximum at $z$ (i.e.\ $u(y)-P(y)\le u(z)-P(z)$ for all $y$ in a neighbourhood of $z$ in $\mathbb R^n$), then
+\[
+L(a,A)\le f(z).
+\]
+\end{lemma}
+\begin{proof}
+We check that $P$ is an admissible test function and compute $\nabla P(z)$ and the Hessian $\nabla^2P(z)$ of \noderef{EuclidHessian}.
+
+\emph{Symmetry.} Since $A$ is symmetric, $\langle Ah,k\rangle=\sum_{i,j}A_{ij}h_jk_i=\sum_{i,j}A_{ji}h_jk_i=\langle h,Ak\rangle$ for all $h,k\in\mathbb R^n$.
+
+\emph{Regularity.} In coordinates $P$ is a polynomial of degree at most $2$ in $y_1,\dots,y_n$, hence $C^\infty$ on $\mathbb R^n$; in particular $P$ is $C^2$ on $\Omega$.
+
+\emph{First derivative.} For $y,h\in\mathbb R^n$, expanding bilinearly,
+\[
+P(y+h)-P(y)=\langle a,h\rangle+\tfrac12\langle Ah,y-z\rangle+\tfrac12\langle A(y-z),h\rangle+\tfrac12\langle Ah,h\rangle
+=\langle a+A(y-z),h\rangle+\tfrac12\langle Ah,h\rangle ,
+\]
+using $\langle Ah,y-z\rangle=\langle h,A(y-z)\rangle$. Since $|\tfrac12\langle Ah,h\rangle|\le\tfrac12\|A\|\,|h|^2=o(|h|)$, $P$ is differentiable at $y$ with $DP(y)h=\langle a+A(y-z),h\rangle$. Hence the gradient is $\nabla P(y)=a+A(y-z)$ and in particular $\nabla P(z)=a$.
+
+\emph{Second derivative.} By the previous paragraph, $DP(y)=\langle a,\cdot\rangle+\langle A(y-z),\cdot\rangle$ for every $y$, so $DP(y+k)-DP(y)=\langle Ak,\cdot\rangle$, which is linear in $k$. Hence $y\mapsto DP(y)$ is differentiable everywhere with $D^2P(y)(k)(h)=\langle Ak,h\rangle$. By \noderef{EuclidHessian},
+\[
+\bigl(\nabla^2P(z)\bigr)_{ij}=D^2P(z)(e_i)(e_j)=\langle Ae_i,e_j\rangle=A_{ji}=A_{ij},
+\]
+so $\nabla^2P(z)=A$.
+
+\emph{Conclusion.} We have $z\in\Omega$, $P$ is $C^2$ on $\Omega$ and $u-P$ has a local maximum at $z$. Clause (ii) of \noderef{IsViscositySubsolution} with $x_0=z$ and $\psi=P$ gives $L(\nabla P(z),\nabla^2P(z))\le f(z)$, that is, $L(a,A)\le f(z)$.
+\end{proof}

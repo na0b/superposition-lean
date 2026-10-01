@@ -1,0 +1,25 @@
+\begin{lemma}[Slices of compactly contained sets, first coordinate, vertex removed]
+Let $(\mathbf X,d_{\mathbf X})$, $(\mathbf Y,d_{\mathbf Y})$ be metric spaces and equip $\mathbf X\times\mathbf Y$ with the $\ell^1$ metric $d_1((x_1,y_1),(x_2,y_2))=d_{\mathbf X}(x_1,x_2)+d_{\mathbf Y}(y_1,y_2)$. Let $\mathcal U\subseteq\mathbf X$, $\mathcal V\subseteq\mathbf Y$, and let $\mathcal O\subseteq\mathbf X\times\mathbf Y$ be open and bounded (for $d_1$) with $\overline{\mathcal O}$ compact and $\overline{\mathcal O}\subseteq\mathcal U\times\mathcal V$. Fix $y_0\in\mathbf Y$ and $\hat x\in\mathbf X$ and set
+\[
+\mathcal O_{\mathbf X}=\{x\in\mathbf X:(x,y_0)\in\mathcal O\}\setminus\{\hat x\}.
+\]
+Then $\mathcal O_{\mathbf X}$ is open and bounded in $\mathbf X$, $\overline{\mathcal O_{\mathbf X}}$ is compact, $\overline{\mathcal O_{\mathbf X}}\subseteq\mathcal U$, $\overline{\mathcal O_{\mathbf X}}\subseteq\{x:(x,y_0)\in\overline{\mathcal O}\}$, and
+\[
+\partial\mathcal O_{\mathbf X}\subseteq\{x:(x,y_0)\in\partial\mathcal O\}\cup\{\hat x\}.
+\]
+\end{lemma}
+\begin{proof}
+Let $\iota:\mathbf X\to\mathbf X\times\mathbf Y$, $\iota(x)=(x,y_0)$, and $A=\iota^{-1}(\mathcal O)=\{x:(x,y_0)\in\mathcal O\}$, so $\mathcal O_{\mathbf X}=A\setminus\{\hat x\}$. By the definition of $d_1$, $d_1(\iota(x),\iota(x'))=d_{\mathbf X}(x,x')+d_{\mathbf Y}(y_0,y_0)=d_{\mathbf X}(x,x')$, so $\iota$ is an isometry, in particular continuous, and $\pi_1\circ\iota=\mathrm{id}_{\mathbf X}$ for the continuous projection $\pi_1(x,y)=x$.
+
+\emph{Open.} $A$ is open as the preimage of the open set $\mathcal O$ under the continuous map $\iota$; $\{\hat x\}$ is closed in the metric space $\mathbf X$; so $\mathcal O_{\mathbf X}=A\setminus\{\hat x\}$ is open.
+
+\emph{Bounded.} Choose $C$ with $d_1(z,z')\le C$ for $z,z'\in\mathcal O$. For $x,x'\in\mathcal O_{\mathbf X}\subseteq A$, $d_{\mathbf X}(x,x')=d_1(\iota(x),\iota(x'))\le C$.
+
+\emph{Closure inside the slice of $\overline{\mathcal O}$.} $\overline{\mathcal O_{\mathbf X}}\subseteq\overline A\subseteq\iota^{-1}(\overline{\mathcal O})$, the last inclusion because $\iota^{-1}(\overline{\mathcal O})$ is closed and contains $A$.
+
+\emph{Closure inside $\mathcal U$.} If $x\in\overline{\mathcal O_{\mathbf X}}$ then $(x,y_0)\in\overline{\mathcal O}\subseteq\mathcal U\times\mathcal V$, so $x\in\mathcal U$.
+
+\emph{Compact closure.} As $\pi_1\circ\iota=\mathrm{id}$ with $\pi_1,\iota$ continuous and $\mathbf X\times\mathbf Y$ Hausdorff, $\iota$ is a closed embedding (its image is the closed set $\{z:\iota(\pi_1z)=z\}$ and $\pi_1$ restricted to it is a continuous inverse). Hence $\iota^{-1}(\overline{\mathcal O})$ is compact, and its closed subset $\overline{\mathcal O_{\mathbf X}}$ is compact.
+
+\emph{Boundary.} Let $x\in\partial\mathcal O_{\mathbf X}$. Since $\mathcal O_{\mathbf X}$ is open, $\partial\mathcal O_{\mathbf X}=\overline{\mathcal O_{\mathbf X}}\setminus\mathcal O_{\mathbf X}$, so $x\in\overline{\mathcal O_{\mathbf X}}$ and $x\notin\mathcal O_{\mathbf X}$. If $x=\hat x$ we are done. Otherwise $x\ne\hat x$ and $x\notin A\setminus\{\hat x\}$ give $x\notin A$; also $x\in\overline{\mathcal O_{\mathbf X}}\subseteq\overline A$. As $A$ is open, $x\in\overline A\setminus A=\partial A$. Finally $\partial A=\partial(\iota^{-1}\mathcal O)\subseteq\iota^{-1}(\partial\mathcal O)$: indeed $x\in\overline A$ gives $\iota(x)\in\overline{\mathcal O}$ and $x\notin A$ gives $\iota(x)\notin\mathcal O=\operatorname{int}\mathcal O$. Thus $(x,y_0)\in\partial\mathcal O$.
+\end{proof}

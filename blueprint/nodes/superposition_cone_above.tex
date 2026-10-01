@@ -1,0 +1,54 @@
+\begin{theorem}[Superposition for comparison with cones from above]
+Let $(\mathbf X,d_{\mathbf X})$ and $(\mathbf Y,d_{\mathbf Y})$ be proper geodesic spaces (\noderef{IsGeodesicSpace}), and let $\mathcal U\subsetneq\mathbf X$ and $\mathcal V\subsetneq\mathbf Y$ be domains (\noderef{IsOpenDomain}). Equip $\mathbf X\times\mathbf Y$ with the $\ell^1$ product metric
+\[
+d_1((x_1,y_1),(x_2,y_2))=d_{\mathbf X}(x_1,x_2)+d_{\mathbf Y}(y_1,y_2),
+\]
+and let $\mathcal W=\mathcal U\times\mathcal V$. Let $u:\mathbf X\to\mathbb R$ and $v:\mathbf Y\to\mathbb R$ be such that $u$ is continuous on $\mathcal U$, $v$ is continuous on $\mathcal V$, $u$ satisfies comparison with cones from above in $\mathcal U$, and $v$ satisfies comparison with cones from above in $\mathcal V$ (\noderef{ConeComparisonAbove}). Then the disjoint sum
+\[
+w(x,y)=u(x)+v(y)
+\]
+is continuous on $\mathcal W$ and satisfies comparison with cones from above in $\mathcal W$ with respect to the metric $d_1$.
+\end{theorem}
+\begin{proof}
+Write $\pi_1(x,y)=x$, $\pi_2(x,y)=y$, and note $d_1(z,z')=d_{\mathbf X}(\pi_1z,\pi_1z')+d_{\mathbf Y}(\pi_2z,\pi_2z')$.
+
+\emph{Step 0: continuity and local upper bound.} By \noderef{ConeComparisonAbove} (clause 1) applied to $u$ in $\mathcal U$ and to $v$ in $\mathcal V$, $u$ is locally bounded from above in $\mathcal U$ and $v$ is locally bounded from above in $\mathcal V$. Together with continuity of $u$ on $\mathcal U$ and of $v$ on $\mathcal V$, \noderef{disjointSum_continuousOn_locallyBddAbove} gives that $w$ is continuous on $\mathcal W$ and locally bounded from above in $\mathcal W$. This proves the first conclusion and clause 1 of \noderef{ConeComparisonAbove} for $w$ in $\mathcal W$.
+
+\emph{Step 1: setting up clause 2.} Let $\hat z=(\hat x,\hat y)\in\mathcal W$, $c\in\mathbb R$, $\kappa\ge0$, and let $\mathcal O\subseteq\mathbf X\times\mathbf Y$ be open and bounded with $\overline{\mathcal O}$ compact, $\overline{\mathcal O}\subseteq\mathcal W$, and $\hat z\notin\mathcal O$. Let $\phi(z)=c+\kappa d_1(\hat z,z)=c+\kappa d_{\mathbf X}(\hat x,\pi_1z)+\kappa d_{\mathbf Y}(\hat y,\pi_2z)$ and assume
+\[
+w\le\phi\quad\text{on }\partial\mathcal O. \tag{1}
+\]
+Let $z_0=(x_0,y_0)\in\overline{\mathcal O}$; we must show $w(z_0)\le\phi(z_0)$. Suppose, for contradiction, that
+\[
+w(z_0)>\phi(z_0). \tag{2}
+\]
+Then $z_0\in\mathcal O$: otherwise $z_0\in\overline{\mathcal O}\setminus\mathcal O=\overline{\mathcal O}\setminus\operatorname{int}\mathcal O=\partial\mathcal O$ ($\mathcal O$ is open), and (1) contradicts (2). (Unlike the paper we do not need $z_0$ to be a maximizer of $w-\phi$; only (2) is used.)
+
+\emph{Step 2: the $\mathbf Y$-slice.} Let $\mathcal O_{\mathbf Y}=\{y:(\hat x,y)\in\mathcal O\}$. By \noderef{slice_right_admissible} (with $\mathcal U,\mathcal V,\mathcal O,\hat x$), $\mathcal O_{\mathbf Y}$ is open and bounded, $\overline{\mathcal O_{\mathbf Y}}$ is compact, $\overline{\mathcal O_{\mathbf Y}}\subseteq\mathcal V$, and $\partial\mathcal O_{\mathbf Y}\subseteq\{y:(\hat x,y)\in\partial\mathcal O\}$. Moreover $\hat y\in\mathcal V$ and $\hat y\notin\mathcal O_{\mathbf Y}$, because $(\hat x,\hat y)=\hat z\notin\mathcal O$. Consider the cone $\phi_{\mathbf Y}=(c-u(\hat x))+\kappa d_{\mathbf Y}(\hat y,\cdot)$ with vertex $\hat y$ and slope $\kappa\ge0$. For $y\in\partial\mathcal O_{\mathbf Y}$ we have $(\hat x,y)\in\partial\mathcal O$, so by (1)
+\[
+u(\hat x)+v(y)=w(\hat x,y)\le c+\kappa d_{\mathbf X}(\hat x,\hat x)+\kappa d_{\mathbf Y}(\hat y,y)=c+\kappa d_{\mathbf Y}(\hat y,y),
+\]
+i.e.\ $v\le\phi_{\mathbf Y}$ on $\partial\mathcal O_{\mathbf Y}$. Clause 2 of \noderef{ConeComparisonAbove} for $v$ in $\mathcal V$ therefore yields
+\[
+u(\hat x)+v(y)\le c+\kappa d_{\mathbf Y}(\hat y,y)=\phi(\hat x,y)\qquad\text{for all }y\in\overline{\mathcal O_{\mathbf Y}}. \tag{3}
+\]
+
+\emph{Step 3: $x_0\ne\hat x$.} If $x_0=\hat x$, then $(\hat x,y_0)=z_0\in\mathcal O$, so $y_0\in\mathcal O_{\mathbf Y}\subseteq\overline{\mathcal O_{\mathbf Y}}$ and (3) gives $w(z_0)=u(\hat x)+v(y_0)\le c+\kappa d_{\mathbf Y}(\hat y,y_0)=c+\kappa d_{\mathbf X}(\hat x,x_0)+\kappa d_{\mathbf Y}(\hat y,y_0)=\phi(z_0)$, contradicting (2).
+
+\emph{Step 4: the $\mathbf X$-slice.} Let $\mathcal O_{\mathbf X}=\{x:(x,y_0)\in\mathcal O\}\setminus\{\hat x\}$. By \noderef{slice_left_admissible} (with $\mathcal U,\mathcal V,\mathcal O,y_0,\hat x$), $\mathcal O_{\mathbf X}$ is open and bounded, $\overline{\mathcal O_{\mathbf X}}$ is compact, $\overline{\mathcal O_{\mathbf X}}\subseteq\mathcal U$, $\overline{\mathcal O_{\mathbf X}}\subseteq\{x:(x,y_0)\in\overline{\mathcal O}\}$, and $\partial\mathcal O_{\mathbf X}\subseteq\{x:(x,y_0)\in\partial\mathcal O\}\cup\{\hat x\}$. Clearly $\hat x\notin\mathcal O_{\mathbf X}$, and $\hat x\in\mathcal U$. Consider the cone
+\[
+\phi_{\mathbf X}(x)=\bigl(c+\kappa d_{\mathbf Y}(\hat y,y_0)-v(y_0)\bigr)+\kappa d_{\mathbf X}(\hat x,x)
+\]
+with vertex $\hat x$ and slope $\kappa\ge0$; note $u(x)\le\phi_{\mathbf X}(x)$ is equivalent to $w(x,y_0)\le\phi(x,y_0)$. We check $u\le\phi_{\mathbf X}$ on $\partial\mathcal O_{\mathbf X}$. Let $x\in\partial\mathcal O_{\mathbf X}$.
+\begin{itemize}
+\item If $(x,y_0)\in\partial\mathcal O$, then (1) gives $u(x)+v(y_0)\le c+\kappa d_{\mathbf X}(\hat x,x)+\kappa d_{\mathbf Y}(\hat y,y_0)$, i.e.\ $u(x)\le\phi_{\mathbf X}(x)$.
+\item Otherwise $x=\hat x$, and we must show $u(\hat x)\le c+\kappa d_{\mathbf Y}(\hat y,y_0)-v(y_0)$ (as $d_{\mathbf X}(\hat x,\hat x)=0$). If $(\hat x,y_0)\in\mathcal O$, then $y_0\in\mathcal O_{\mathbf Y}\subseteq\overline{\mathcal O_{\mathbf Y}}$ and (3) with $y=y_0$ gives exactly this. If $(\hat x,y_0)\notin\mathcal O$, then, since $\hat x=x\in\partial\mathcal O_{\mathbf X}\subseteq\overline{\mathcal O_{\mathbf X}}$, we have $(\hat x,y_0)\in\overline{\mathcal O}\setminus\mathcal O=\partial\mathcal O$, and (1) gives $u(\hat x)+v(y_0)\le c+0+\kappa d_{\mathbf Y}(\hat y,y_0)$, which is again the desired inequality.
+\end{itemize}
+Hence clause 2 of \noderef{ConeComparisonAbove} for $u$ in $\mathcal U$ (with vertex $\hat x\in\mathcal U\setminus\mathcal O_{\mathbf X}$, constant $c+\kappa d_{\mathbf Y}(\hat y,y_0)-v(y_0)$, slope $\kappa$, set $\mathcal O_{\mathbf X}$) yields $u\le\phi_{\mathbf X}$ on $\overline{\mathcal O_{\mathbf X}}$. Now $(x_0,y_0)=z_0\in\mathcal O$ and $x_0\ne\hat x$ by Step 3, so $x_0\in\mathcal O_{\mathbf X}\subseteq\overline{\mathcal O_{\mathbf X}}$ and
+\[
+w(z_0)=u(x_0)+v(y_0)\le c+\kappa d_{\mathbf X}(\hat x,x_0)+\kappa d_{\mathbf Y}(\hat y,y_0)=\phi(z_0),
+\]
+contradicting (2). Hence $w\le\phi$ on $\overline{\mathcal O}$, which is clause 2 of \noderef{ConeComparisonAbove} for $w$ in $\mathcal W$ with respect to $d_1$.
+
+The hypotheses that $\mathbf X,\mathbf Y$ are proper and geodesic and that $\mathcal U,\mathcal V$ are proper subdomains are the paper's standing setting for the definition of comparison with cones; the argument above does not otherwise use them.
+\end{proof}

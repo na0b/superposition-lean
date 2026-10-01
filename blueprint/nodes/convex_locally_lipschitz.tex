@@ -1,0 +1,23 @@
+\begin{lemma}[Convex functions are locally Lipschitz with locally bounded subgradients]
+Let $n\ge0$, let $F:\mathbb R^n\to\mathbb R$ be convex on $\mathbb R^n$, $x_0\in\mathbb R^n$ and $R\in\mathbb R$. Then there is $\Lambda\ge0$ such that
+\begin{enumerate}
+\item[(i)] $|F(y)-F(y')|\le\Lambda|y-y'|$ for all $y,y'\in\overline B(x_0,R)$, and
+\item[(ii)] $|q|\le\Lambda$ whenever $y\in\overline B(x_0,R)$ and $q\in\mathbb R^n$ satisfies $F(y)+\langle q,w-y\rangle\le F(w)$ for all $w\in\mathbb R^n$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+If $R<0$ the ball is empty and $\Lambda=0$ works; assume $R\ge0$ and put $\rho=R+1$.
+
+\emph{Upper bound on $\overline B(x_0,\rho)$.} Let $s=(n+1)\rho$ and $M=\max\{F(x_0),F(x_0\pm se_i):1\le i\le n\}$. Let $|h|\le\rho$. By Cauchy--Schwarz $\sum_i|h_i|\le\sqrt n|h|\le s$. Let $\sigma_i=1$ if $h_i\ge0$ and $\sigma_i=-1$ otherwise, $\lambda_i=|h_i|/s$ and $\lambda_0=1-\sum_i\lambda_i\ge0$. Then $\lambda_0+\sum_i\lambda_i=1$ and
+\[
+x_0+h=\lambda_0x_0+\sum_{i=1}^n\lambda_i\,(x_0+\sigma_ise_i),
+\]
+so by Jensen's inequality for the convex $F$ (finite convex combinations), $F(x_0+h)\le\lambda_0F(x_0)+\sum_i\lambda_iF(x_0+\sigma_ise_i)\le M$.
+
+\emph{Lower bound.} For $y\in\overline B(x_0,\rho)$ also $y'=2x_0-y\in\overline B(x_0,\rho)$ and $x_0=\frac12y+\frac12y'$, so $F(x_0)\le\frac12F(y)+\frac12F(y')\le\frac12F(y)+\frac12M$, i.e.\ $F(y)\ge2F(x_0)-M$. Hence $|F|\le C$ on $\overline B(x_0,\rho)$ with $C=\max(|M|,|2F(x_0)-M|)$. Put $\Lambda=2C\ge0$.
+
+\emph{(i).} Let $y,y'\in\overline B(x_0,R)$ with $d=|y-y'|>0$ (for $d=0$ there is nothing to show), let $e=(y'-y)/d$ and $w=y'+e$. Then $|w-x_0|\le R+1=\rho$, and $y'=\lambda w+(1-\lambda)y$ with $\lambda=\frac d{d+1}$ (indeed $y+d e=y'$ and $w=y+(d+1)e$). Convexity gives $F(y')\le\lambda F(w)+(1-\lambda)F(y)$, i.e.\ $F(y')-F(y)\le\lambda(F(w)-F(y))\le\frac d{d+1}\,2C\le\Lambda d$. Exchanging $y,y'$ gives $|F(y)-F(y')|\le\Lambda|y-y'|$.
+
+\emph{(ii).} Let $y\in\overline B(x_0,R)$ and $q$ as in (ii); if $q=0$ there is nothing to show, so let $q\ne0$. Then $w=y+q/|q|\in\overline B(x_0,\rho)$ and $F(w)\ge F(y)+\langle q,q/|q|\rangle=F(y)+|q|$, so $|q|\le F(w)-F(y)\le2C=\Lambda$.
+
+\end{proof}

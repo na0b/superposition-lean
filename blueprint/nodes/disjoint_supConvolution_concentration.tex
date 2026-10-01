@@ -1,0 +1,33 @@
+\begin{lemma}[Concentration of the sup-convolutions in disjoint variables]
+Let $n,m\ge0$ and write $\operatorname{fst}:\mathbb R^{n+m}\to\mathbb R^n$, $\operatorname{snd}:\mathbb R^{n+m}\to\mathbb R^m$ for the block maps of \noderef{EuclidFst} and \noderef{EuclidSnd}. Let $z_0\in\mathbb R^{n+m}$, $r>0$, $x_0=\operatorname{fst}z_0$, $y_0=\operatorname{snd}z_0$, $K_1=\overline B(x_0,r)\subseteq\mathbb R^n$, $K_2=\overline B(y_0,r)\subseteq\mathbb R^m$. Let $u:\mathbb R^n\to\mathbb R$ be upper semicontinuous on $K_1$, $v:\mathbb R^m\to\mathbb R$ upper semicontinuous on $K_2$ (relative to these sets), and $Q:\mathbb R^{n+m}\to\mathbb R$ continuous. Assume
+\[
+u(\operatorname{fst}z)+v(\operatorname{snd}z)-Q(z)<m_0:=u(x_0)+v(y_0)-Q(z_0)\qquad\text{for all }z\in\overline B(z_0,r)\setminus\{z_0\}.
+\]
+For $\varepsilon>0$ let $u^\varepsilon=u^\varepsilon_{K_1}$ and $v^\varepsilon=v^\varepsilon_{K_2}$ be the sup-convolutions of \noderef{SupConvolution}. Then for every $\rho>0$ there are $\beta>0$ and $\varepsilon_0>0$ such that
+\[
+u^\varepsilon(\operatorname{fst}z)+v^\varepsilon(\operatorname{snd}z)-Q(z)\le m_0-\beta
+\]
+for all $\varepsilon\in(0,\varepsilon_0)$ and all $z\in\overline B(z_0,r)$ with $|z-z_0|\ge\rho$.
+\end{lemma}
+\begin{proof}
+\emph{Preliminaries.} $\operatorname{fst},\operatorname{snd}$ are linear (they select coordinates), and by \noderef{euclidSplit_norm_sq}, $|h|^2=|\operatorname{fst}h|^2+|\operatorname{snd}h|^2$ for all $h$; in particular $|\operatorname{fst}h|\le|h|$ and $|\operatorname{snd}h|\le|h|$, so both maps are $1$-Lipschitz, hence continuous, and they map $B:=\overline B(z_0,r)$ into $K_1$ and $K_2$ respectively. For $x\in\mathbb R^n$, $y\in\mathbb R^m$ let $x\oplus y\in\mathbb R^{n+m}$ denote the concatenation (first block $x$, second block $y$); by \noderef{euclidSplit_norm_sq}, $|x\oplus y-z|^2=|x-\operatorname{fst}z|^2+|y-\operatorname{snd}z|^2$.
+
+$K_1,K_2$ are compact and nonempty; $u$ and $v$, being upper semicontinuous there, attain their maxima $M_u=\max_{K_1}u$, $M_v=\max_{K_2}v$ (a maximizing sequence has a convergent subsequence and upper semicontinuity at its limit bounds the limsup). Let $M_Q\ge\sup_B|Q|$ ($Q$ continuous, $B$ compact). By \noderef{supConvolution_properties}(ii) (applied to $u$ on $K_1$ and $v$ on $K_2$), for every $\varepsilon>0$ and $z$ there are $\hat x\in K_1$, $\hat y\in K_2$ with
+\[
+u^\varepsilon(\operatorname{fst}z)=u(\hat x)-\frac{|\operatorname{fst}z-\hat x|^2}{2\varepsilon},\qquad v^\varepsilon(\operatorname{snd}z)=v(\hat y)-\frac{|\operatorname{snd}z-\hat y|^2}{2\varepsilon}. \tag{1}
+\]
+
+\emph{The gap $\beta$.} Fix $\rho>0$ and let $A_\rho=\{z\in B:|z-z_0|\ge\rho\}$, a compact set. If $A_\rho=\emptyset$ the claim holds vacuously with $\beta=\varepsilon_0=1$. Otherwise $\Phi(z)=u(\operatorname{fst}z)+v(\operatorname{snd}z)-Q(z)$ is upper semicontinuous on $A_\rho$: at $z^*\in A_\rho$ and for $t>0$, upper semicontinuity of $u$ on $K_1$ at $\operatorname{fst}z^*$ together with continuity of $\operatorname{fst}$ and $\operatorname{fst}(A_\rho)\subseteq K_1$ gives $u(\operatorname{fst}z)<u(\operatorname{fst}z^*)+t$ for $z\in A_\rho$ near $z^*$, and similarly for $v$ and $-Q$. Hence $\Phi$ attains its maximum $m_\rho$ on $A_\rho$ at some $z_\rho$; as $|z_\rho-z_0|\ge\rho>0$, $z_\rho\neq z_0$, so $m_\rho<m_0$ by hypothesis. Put $\beta=\frac12(m_0-m_\rho)>0$, so $m_\rho+\beta=m_0-\beta$.
+
+\emph{Local control.} For each $z^*\in A_\rho$ choose $\eta(z^*)>0$ such that: $u(x)<u(\operatorname{fst}z^*)+\beta/3$ for $x\in K_1$ with $|x-\operatorname{fst}z^*|<\eta(z^*)$; $v(y)<v(\operatorname{snd}z^*)+\beta/3$ for $y\in K_2$ with $|y-\operatorname{snd}z^*|<\eta(z^*)$ (upper semicontinuity of $u$ on $K_1$ at $\operatorname{fst}z^*\in K_1$ and of $v$ on $K_2$ at $\operatorname{snd}z^*\in K_2$); and $Q(z)>Q(z^*)-\beta/3$ for $|z-z^*|<\eta(z^*)$ (continuity of $Q$). The open balls $B(z^*,\eta(z^*))$, $z^*\in A_\rho$, cover the compact set $A_\rho$; by the Lebesgue number lemma there is $\lambda>0$ such that for every $z\in A_\rho$ there is $z^*\in A_\rho$ with $B(z,\lambda)\subseteq B(z^*,\eta(z^*))$.
+
+\emph{Choice of $\varepsilon_0$ and conclusion.} Let $C_0=M_u+M_v+M_Q-m_0+\beta$ and $\varepsilon_0=\lambda^2/(2(|C_0|+1))>0$. Let $0<\varepsilon<\varepsilon_0$ and $z\in A_\rho$, and suppose for contradiction that $W:=u^\varepsilon(\operatorname{fst}z)+v^\varepsilon(\operatorname{snd}z)-Q(z)>m_0-\beta$. With $\hat x,\hat y$ as in (1),
+\[
+\frac{|\operatorname{fst}z-\hat x|^2+|\operatorname{snd}z-\hat y|^2}{2\varepsilon}=u(\hat x)+v(\hat y)-Q(z)-W<M_u+M_v+M_Q-m_0+\beta=C_0\le|C_0| ,
+\]
+using $u(\hat x)\le M_u$, $v(\hat y)\le M_v$, $-Q(z)\le M_Q$. Hence the point $\zeta=\hat x\oplus\hat y$ satisfies $|\zeta-z|^2=|\hat x-\operatorname{fst}z|^2+|\hat y-\operatorname{snd}z|^2<2\varepsilon|C_0|<\lambda^2$, i.e.\ $\zeta\in B(z,\lambda)$. Choose $z^*\in A_\rho$ with $B(z,\lambda)\subseteq B(z^*,\eta:=\eta(z^*))$. Then $|z-z^*|<\eta$, and $|\hat x-\operatorname{fst}z^*|=|\operatorname{fst}(\zeta-z^*)|\le|\zeta-z^*|<\eta$, $|\hat y-\operatorname{snd}z^*|\le|\zeta-z^*|<\eta$ (as $\operatorname{fst}\zeta=\hat x$, $\operatorname{snd}\zeta=\hat y$ and the block maps are linear and $1$-Lipschitz). Since $\hat x\in K_1$, $\hat y\in K_2$, the local control gives
+\[
+u(\hat x)+v(\hat y)-Q(z)<u(\operatorname{fst}z^*)+v(\operatorname{snd}z^*)-Q(z^*)+\beta=\Phi(z^*)+\beta\le m_\rho+\beta=m_0-\beta .
+\]
+But by (1), $W\le u(\hat x)+v(\hat y)-Q(z)$ (the subtracted squares are nonnegative), so $W<m_0-\beta$, a contradiction. Hence $W\le m_0-\beta$ for all $\varepsilon\in(0,\varepsilon_0)$ and all $z\in B$ with $|z-z_0|\ge\rho$.
+\end{proof}

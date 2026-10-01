@@ -1,0 +1,27 @@
+\begin{lemma}[Concentration of the sup-convolutions near a strict maximum]
+Let $n\ge0$, $x_0\in\mathbb R^n$, $r>0$, $K=\overline B(x_0,r)$, let $u,v:\mathbb R^n\to\mathbb R$ be upper semicontinuous on $K$ (relative to $K$), and let $Q:\mathbb R^n\to\mathbb R$ be continuous. Assume that $u+v-Q$ has a strict maximum over $K$ at $x_0$:
+\[
+u(y)+v(y)-Q(y)<m_0:=u(x_0)+v(x_0)-Q(x_0)\qquad\text{for all }y\in K\setminus\{x_0\}.
+\]
+For $\varepsilon>0$ let $u^\varepsilon=u^\varepsilon_K$ and $v^\varepsilon=v^\varepsilon_K$ be the sup-convolutions of \noderef{SupConvolution}. Then for every $\rho>0$ there are $\beta>0$ and $\varepsilon_0>0$ such that
+\[
+u^\varepsilon(y)+v^\varepsilon(y)-Q(y)\le m_0-\beta\qquad\text{for all }\varepsilon\in(0,\varepsilon_0)\text{ and all }y\in K\text{ with }|y-x_0|\ge\rho .
+\]
+\end{lemma}
+\begin{proof}
+$K$ is compact and nonempty. Since $u,v$ are upper semicontinuous on $K$ they attain their maxima on $K$; let $M_u=\max_Ku$, $M_v=\max_Kv$, and let $M_Q\ge\sup_K|Q|$ ($Q$ is continuous on the compact $K$). By \noderef{supConvolution_properties}(ii), for every $\varepsilon>0$ and $y$ there are $\hat y,\hat y'\in K$ with $u^\varepsilon(y)=u(\hat y)-\frac{|y-\hat y|^2}{2\varepsilon}$ and $v^\varepsilon(y)=v(\hat y')-\frac{|y-\hat y'|^2}{2\varepsilon}$.
+
+Fix $\rho>0$ and let $A_\rho=\{y\in K:|y-x_0|\ge\rho\}$, a compact subset of $K$. If $A_\rho=\emptyset$ the claim holds vacuously with $\beta=\varepsilon_0=1$. Otherwise $w:=u+v-Q$ is upper semicontinuous on $A_\rho$ and attains its maximum $m_\rho$ there at some $y_\rho$; as $|y_\rho-x_0|\ge\rho>0$, $y_\rho\ne x_0$ and so $m_\rho<m_0$ by hypothesis. Put $\beta=\frac12(m_0-m_\rho)>0$, so $m_\rho+\beta=m_0-\beta$.
+
+\emph{Local control.} For each $y^*\in A_\rho$, upper semicontinuity of $u$ and $v$ on $K$ at $y^*$ and continuity of $Q$ at $y^*$ give $\eta(y^*)>0$ such that $u(z)<u(y^*)+\beta/3$ and $v(z)<v(y^*)+\beta/3$ for $z\in K$ with $|z-y^*|<\eta(y^*)$, and $Q(z)>Q(y^*)-\beta/3$ for all $z$ with $|z-y^*|<\eta(y^*)$. The open balls $B(y^*,\eta(y^*))$, $y^*\in A_\rho$, cover the compact set $A_\rho$, so by the Lebesgue number lemma there is $\lambda>0$ such that for every $y\in A_\rho$ there is $y^*\in A_\rho$ with $B(y,\lambda)\subseteq B(y^*,\eta(y^*))$.
+
+\emph{Choice of $\varepsilon_0$.} Let $C_0=M_u+M_v+M_Q-m_0+\beta$ and $\varepsilon_0=\lambda^2/(2(|C_0|+1))>0$. Let $0<\varepsilon<\varepsilon_0$ and $y\in A_\rho$, and suppose for contradiction that $u^\varepsilon(y)+v^\varepsilon(y)-Q(y)>m_0-\beta$. With $\hat y,\hat y'$ as above,
+\[
+\frac{|y-\hat y|^2}{2\varepsilon}+\frac{|y-\hat y'|^2}{2\varepsilon}=u(\hat y)+v(\hat y')-Q(y)-\bigl(u^\varepsilon(y)+v^\varepsilon(y)-Q(y)\bigr)<M_u+M_v+M_Q-m_0+\beta=C_0\le|C_0| ,
+\]
+using $u(\hat y)\le M_u$, $v(\hat y')\le M_v$, $-Q(y)\le M_Q$. Both squares are nonnegative, so $|y-\hat y|^2<2\varepsilon|C_0|<\lambda^2$ and likewise $|y-\hat y'|^2<\lambda^2$; thus $\hat y,\hat y'\in B(y,\lambda)$. Choose $y^*$ with $B(y,\lambda)\subseteq B(y^*,\eta(y^*))$; then $y,\hat y,\hat y'\in B(y^*,\eta(y^*))$ and $\hat y,\hat y'\in K$, so
+\[
+u(\hat y)+v(\hat y')-Q(y)<u(y^*)+v(y^*)-Q(y^*)+\beta\le m_\rho+\beta=m_0-\beta .
+\]
+Since $u^\varepsilon(y)+v^\varepsilon(y)-Q(y)\le u(\hat y)+v(\hat y')-Q(y)$ (the subtracted squares are nonnegative), we get $u^\varepsilon(y)+v^\varepsilon(y)-Q(y)<m_0-\beta$, a contradiction. Hence $u^\varepsilon(y)+v^\varepsilon(y)-Q(y)\le m_0-\beta$ for all $\varepsilon\in(0,\varepsilon_0)$ and $y\in A_\rho$.
+\end{proof}

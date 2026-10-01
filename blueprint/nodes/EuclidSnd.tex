@@ -1,0 +1,7 @@
+\begin{definition}[Second coordinate block of $\mathbb R^{n+m}$]
+Let $n,m\ge0$ and identify $\mathbb R^{n+m}$ with Euclidean space (Lean: \texttt{EuclideanSpace ℝ (Fin (n+m))}), with coordinates $z=(z_1,\dots,z_{n+m})$. The \emph{second block} of $z$ is the vector
+\[
+z''=\operatorname{snd}(z)=(z_{n+1},\dots,z_{n+m})\in\mathbb R^m ,
+\]
+i.e.\ $\operatorname{snd}(z)_j=z_{n+j}$ for $1\le j\le m$ (Lean: coordinate \texttt{Fin.natAdd n j}). Together with the first block $\operatorname{fst}(z)=(z_1,\dots,z_n)$ this realizes the identification $\mathbb R^{n+m}=\mathbb R^n\times\mathbb R^m$ by concatenation of coordinates, $z\leftrightarrow(\operatorname{fst}z,\operatorname{snd}z)$, as in paper Theorem infsuper, where the point $(x,y)$ has $\operatorname{snd}z=y$.
+\end{definition}

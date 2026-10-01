@@ -1,0 +1,7 @@
+\begin{definition}[Sup-convolution]
+Let $n\ge0$, $u:\mathbb R^n\to\mathbb R$, $K\subseteq\mathbb R^n$ and $\varepsilon\in\mathbb R$. The \emph{sup-convolution} of $u$ over $K$ with parameter $\varepsilon$ is the function $u^{\varepsilon}_K:\mathbb R^n\to\mathbb R$,
+\[
+u^{\varepsilon}_K(x)=\sup_{y\in K}\Bigl(u(y)-\frac{|x-y|^2}{2\varepsilon}\Bigr),
+\]
+where $\sup$ is the real supremum of the set $\{u(y)-|x-y|^2/(2\varepsilon):y\in K\}$, with Lean's convention that the supremum of an empty set or of a set that is not bounded above is $0$. (It is only used for $\varepsilon>0$, $K$ compact nonempty and $u$ upper semicontinuous on $K$, where the supremum is a genuine, attained maximum.)
+\end{definition}

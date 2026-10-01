@@ -1,0 +1,7 @@
+\begin{definition}[First coordinate block of $\mathbb R^{n+m}$]
+Let $n,m\ge0$ and identify $\mathbb R^{n+m}$ with Euclidean space (Lean: \texttt{EuclideanSpace ℝ (Fin (n+m))}), with coordinates $z=(z_1,\dots,z_{n+m})$. The \emph{first block} of $z$ is the vector
+\[
+z'=\operatorname{fst}(z)=(z_1,\dots,z_n)\in\mathbb R^n ,
+\]
+i.e.\ $\operatorname{fst}(z)_i=z_i$ for $1\le i\le n$ (Lean: coordinate \texttt{Fin.castAdd m i}). Together with the second block $\operatorname{snd}(z)=(z_{n+1},\dots,z_{n+m})\in\mathbb R^m$ this realizes the identification $\mathbb R^{n+m}=\mathbb R^n\times\mathbb R^m$ by concatenation of coordinates, $z\leftrightarrow(\operatorname{fst}z,\operatorname{snd}z)$, used for the product $\mathcal U\times\mathcal V\subseteq\mathbb R^n\times\mathbb R^m$ of paper Theorem infsuper, where the point $(x,y)$ is written $z$ with $\operatorname{fst}z=x$.
+\end{definition}

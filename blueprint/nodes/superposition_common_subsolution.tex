@@ -1,0 +1,33 @@
+\begin{theorem}[Subsolutions of sub-additive equations; paper Theorem super-common]
+Let $\Omega\subseteq\mathbb R^n$ be a domain (\noderef{IsOpenDomain}: open, nonempty and connected), and let $f,g:\mathbb R^n\to\mathbb R$ be continuous on $\Omega$, i.e.\ $f,g\in C(\Omega)$. Let $L:\mathbb R^n\times\mathbb R^{n\times n}\to\mathbb R$ be continuous on $\mathbb R^n\times\mathbb S^n$ ($\mathbb S^n$ the symmetric real $n\times n$ matrices), elliptic in the sense of (ellip) (\noderef{IsDegenerateElliptic}: $L(\xi,X)\le L(\xi,Y)$ whenever $X,Y\in\mathbb S^n$, $X\ge Y$), and subadditive in the sense of (sub-add) (\noderef{IsSubadditiveOperator}: $L(\xi+\eta,X+Y)\le L(\xi,X)+L(\eta,Y)$ for $\xi,\eta\in\mathbb R^n$, $X,Y\in\mathbb S^n$). Assume that $u:\mathbb R^n\to\mathbb R$, upper semicontinuous on $\Omega$, is a viscosity subsolution of
+\[
+L(\nabla u,\nabla^2u)=f\quad\text{in }\Omega,
+\]
+and $v:\mathbb R^n\to\mathbb R$, upper semicontinuous on $\Omega$, is a viscosity subsolution of
+\[
+L(\nabla v,\nabla^2v)=g\quad\text{in }\Omega
+\]
+(both in the sense of \noderef{IsViscositySubsolution}, which includes upper semicontinuity on $\Omega$). Then $w=u+v$ is a viscosity subsolution of
+\[
+L(\nabla w,\nabla^2w)=f+g\quad\text{in }\Omega .
+\]
+\end{theorem}
+\begin{proof}
+Write $w=u+v$. We verify the two clauses of \noderef{IsViscositySubsolution} for $w$ with right-hand side $f+g$.
+
+\emph{(i) Upper semicontinuity.} Let $x\in\Omega$ and $t>w(x)$; put $s=\frac12(t-w(x))>0$. By upper semicontinuity of $u$ and $v$ on $\Omega$ (clause (i) for $u$ and $v$) there is a neighbourhood $U$ of $x$ with $u<u(x)+s$ and $v<v(x)+s$ on $U\cap\Omega$; then $w<w(x)+2s=t$ on $U\cap\Omega$. So $w$ is upper semicontinuous on $\Omega$.
+
+\emph{(ii) Test functions.} Let $x_0\in\Omega$ and let $\psi:\mathbb R^n\to\mathbb R$ be $C^2$ on $\Omega$ with $w-\psi$ attaining a local maximum at $x_0$. Write $H=\nabla^2\psi(x_0)$ (\noderef{EuclidHessian}). $\Omega$ is open since it is a domain. Fix $\eta>0$. By \noderef{c2_local_max_to_strict_quadratic} (with this $\Omega$, $\psi$, $w$, $x_0$, $\eta$), $H$ is symmetric and there is $r>0$ with $\overline B(x_0,r)\subseteq\Omega$ and
+\[
+w(y)-Q_\eta(y)\le w(x_0)-\psi(x_0)-\tfrac\eta2|y-x_0|^2\quad(y\in\overline B(x_0,r)),\qquad Q_\eta(y)=\psi(x_0)+\langle\nabla\psi(x_0),y-x_0\rangle+\tfrac12\langle(H+2\eta I)(y-x_0),y-x_0\rangle .
+\]
+For $y\in\overline B(x_0,r)\setminus\{x_0\}$ the right-hand side is $<w(x_0)-\psi(x_0)$. Hence the hypotheses of \noderef{sum_subsolution_quadratic_strict} hold with $q_0=\psi(x_0)$, $c=\nabla\psi(x_0)$ and the symmetric matrix $P=H+2\eta I$ (the remaining hypotheses — continuity of $f,g$ on $\Omega$, continuity of $L$ on $\mathbb R^n\times\mathbb S^n$, ellipticity, subadditivity, and the subsolution properties of $u$ and $v$ — are hypotheses of the theorem). It gives
+\[
+L\bigl(\nabla\psi(x_0),H+2\eta I\bigr)\le f(x_0)+g(x_0)\qquad\text{for every }\eta>0 .
+\]
+As $\eta\to0^+$, $(\nabla\psi(x_0),H+2\eta I)\to(\nabla\psi(x_0),H)$ within $\mathbb R^n\times\mathbb S^n$ ($H$ and $H+2\eta I$ are symmetric), so by continuity of $L$ on $\mathbb R^n\times\mathbb S^n$,
+\[
+L\bigl(\nabla\psi(x_0),\nabla^2\psi(x_0)\bigr)\le f(x_0)+g(x_0)=(f+g)(x_0).
+\]
+This is clause (ii) for $w$, so $w=u+v$ is a viscosity subsolution of $L(\nabla w,\nabla^2w)=f+g$ in $\Omega$.
+\end{proof}

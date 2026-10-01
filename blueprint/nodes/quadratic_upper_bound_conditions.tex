@@ -1,0 +1,16 @@
+\begin{lemma}[First- and second-order conditions from a local quadratic upper bound]
+Let $n\ge0$, $\gamma\in\mathbb R^n$ and let $G$ be a symmetric real $n\times n$ matrix. Assume that for every $\kappa>0$ there is $\eta>0$ such that
+\[
+\langle\gamma,h\rangle+\tfrac12\langle Gh,h\rangle\le\kappa|h|^2\qquad\text{for all }h\in\mathbb R^n\text{ with }|h|<\eta .
+\]
+Then $\gamma=0$ and $-G$ is positive semidefinite, i.e.\ $\langle Ge,e\rangle\le0$ for all $e\in\mathbb R^n$.
+\end{lemma}
+\begin{proof}
+Write $q(h)=\langle Gh,h\rangle$; then $q(th)=t^2q(h)$ for $t\in\mathbb R$.
+
+\emph{$\gamma=0$.} Take $\kappa=1$ and the corresponding $\eta$. Suppose $\gamma\ne0$ and put $Y=1-\frac{q(\gamma)}{2|\gamma|^2}$ and $t=\min\bigl(\frac{\eta}{2|\gamma|},\frac1{2(|Y|+1)}\bigr)>0$. Then $|t\gamma|=t|\gamma|\le\eta/2<\eta$, so with $h=t\gamma$ the hypothesis gives $t|\gamma|^2+\frac12t^2q(\gamma)\le t^2|\gamma|^2$. Dividing by $t|\gamma|^2>0$ gives $1\le tY\le t|Y|\le\frac{|Y|}{2(|Y|+1)}<1$, a contradiction. Hence $\gamma=0$.
+
+\emph{$q\le0$.} Fix $e$ and $\kappa>0$, take $\eta$ from the hypothesis and $t=\eta/(2(|e|+1))>0$; then $|te|<\eta$, and since $\gamma=0$ the hypothesis at $h=te$ gives $\frac12t^2q(e)\le\kappa t^2|e|^2$, i.e.\ $q(e)\le2\kappa|e|^2$. If $q(e)>0$, choose $\kappa=q(e)/(4(|e|^2+1))$: then $q(e)\le q(e)\frac{|e|^2}{2(|e|^2+1)}<q(e)$, a contradiction. So $q(e)\le0$ for every $e$.
+
+\emph{Positive semidefiniteness.} $-G$ is symmetric since $G$ is, and for every $x\in\mathbb R^n$, $x^T(-G)x=-\langle Gx,x\rangle=-q(x)\ge0$. Hence $-G$ is positive semidefinite.
+\end{proof}

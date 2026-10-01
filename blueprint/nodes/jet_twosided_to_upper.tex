@@ -1,0 +1,13 @@
+\begin{lemma}[Upper half of a two-sided second-order expansion]
+Let $k\ge0$, $w:\mathbb R^k\to\mathbb R$, $y,a_0\in\mathbb R^k$ and let $A_0$ be a real $k\times k$ matrix. Assume that for every $\kappa>0$, for all $x$ in a neighbourhood of $y$,
+\[
+\bigl|w(x)-w(y)-\langle a_0,x-y\rangle-\tfrac12\langle A_0(x-y),x-y\rangle\bigr|\le\kappa|x-y|^2 .
+\]
+Then for every $\kappa>0$, for all $x$ in a neighbourhood of $y$,
+\[
+w(x)\le w(y)+\langle a_0,x-y\rangle+\tfrac12\langle A_0(x-y),x-y\rangle+\kappa|x-y|^2 .
+\]
+\end{lemma}
+\begin{proof}
+Fix $\kappa>0$ and take the neighbourhood of $y$ given by the hypothesis for this $\kappa$. For $x$ in it, $|t|\le s$ implies $t\le s$, so with $t=w(x)-w(y)-\langle a_0,x-y\rangle-\frac12\langle A_0(x-y),x-y\rangle$ and $s=\kappa|x-y|^2$ we get $t\le s$; adding $w(y)+\langle a_0,x-y\rangle+\frac12\langle A_0(x-y),x-y\rangle$ to both sides gives the claimed inequality on the same neighbourhood.
+\end{proof}

@@ -1,0 +1,21 @@
+\begin{lemma}[Basic properties of the sup-convolution]
+Let $n\ge0$, let $K\subseteq\mathbb R^n$ be compact and nonempty, let $u:\mathbb R^n\to\mathbb R$ be upper semicontinuous on $K$ (relative to $K$), let $\varepsilon>0$, and let $u^\varepsilon=u^\varepsilon_K$ be the sup-convolution of \noderef{SupConvolution}. Then:
+\begin{enumerate}
+\item[(i)] for all $x\in\mathbb R^n$ and $y\in K$: $u(y)-\dfrac{|x-y|^2}{2\varepsilon}\le u^\varepsilon(x)$;
+\item[(ii)] for every $x\in\mathbb R^n$ there is $\hat x\in K$ with $u^\varepsilon(x)=u(\hat x)-\dfrac{|x-\hat x|^2}{2\varepsilon}$;
+\item[(iii)] the function $x\mapsto u^\varepsilon(x)+\dfrac{|x|^2}{2\varepsilon}$ is convex on $\mathbb R^n$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Fix $x\in\mathbb R^n$ and let $\varphi_x(y)=u(y)-|x-y|^2/(2\varepsilon)$ and $S_x=\varphi_x(K)$, so that $u^\varepsilon(x)=\sup S_x$ by \noderef{SupConvolution}.
+
+\emph{$\varphi_x$ attains its maximum on $K$.} $\varphi_x$ is upper semicontinuous on $K$, being the sum of $u$ (upper semicontinuous on $K$) and the continuous function $y\mapsto-|x-y|^2/(2\varepsilon)$. Let $s=\sup_K\varphi_x\in(-\infty,+\infty]$ (extended-real supremum; $K\neq\emptyset$) and choose $y_k\in K$ with $\varphi_x(y_k)\to s$. By compactness a subsequence converges to some $\hat x\in K$; along it, upper semicontinuity at $\hat x$ gives $\varphi_x(\hat x)\ge\limsup\varphi_x(y_k)=s$. Hence $s=\varphi_x(\hat x)$ is finite and attained.
+
+\emph{(i) and (ii).} Thus $S_x$ is nonempty, bounded above, and has the greatest element $\varphi_x(\hat x)$. So its real supremum is $\sup S_x=\varphi_x(\hat x)$ (Lean's convention for empty or unbounded sets does not apply), which is (ii), and every element of $S_x$ is $\le\sup S_x$, which is (i).
+
+\emph{(iii).} For $y\in K$ define the affine function $\ell_y(x)=u(y)-\frac{|y|^2}{2\varepsilon}+\frac{\langle x,y\rangle}{\varepsilon}$. Since $|x-y|^2=|x|^2-2\langle x,y\rangle+|y|^2$, we have $\varphi_x(y)+\frac{|x|^2}{2\varepsilon}=\ell_y(x)$. Put $G(x)=u^\varepsilon(x)+\frac{|x|^2}{2\varepsilon}$. By (i), $\ell_y(x)\le G(x)$ for all $x\in\mathbb R^n$, $y\in K$; by (ii), $G(x)=\ell_{\hat x}(x)$ for a suitable $\hat x\in K$. Now let $x_1,x_2\in\mathbb R^n$, $t\in[0,1]$, $x_t=tx_1+(1-t)x_2$, and choose $\hat x\in K$ with $G(x_t)=\ell_{\hat x}(x_t)$. Since $\ell_{\hat x}$ is affine,
+\[
+G(x_t)=t\,\ell_{\hat x}(x_1)+(1-t)\,\ell_{\hat x}(x_2)\le t\,G(x_1)+(1-t)\,G(x_2).
+\]
+As $\mathbb R^n$ is convex, $G$ is convex on $\mathbb R^n$.
+\end{proof}

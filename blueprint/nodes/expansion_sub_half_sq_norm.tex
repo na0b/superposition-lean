@@ -1,0 +1,19 @@
+\begin{lemma}[Second-order expansion after removing $|x|^2/(2\varepsilon)$]
+Let $n\ge0$, $w:\mathbb R^n\to\mathbb R$, $\varepsilon>0$, $y,a_0\in\mathbb R^n$ and let $A_0$ be a real $n\times n$ matrix. Put $F(z)=w(z)+\frac{|z|^2}{2\varepsilon}$ and assume
+\[
+F(z)-F(y)-\langle a_0,z-y\rangle-\tfrac12\langle A_0(z-y),z-y\rangle=o(|z-y|^2)\qquad(z\to y).
+\]
+Let $a=a_0-\frac1\varepsilon y$ and $A=A_0-\frac1\varepsilon I$. Then for every $\kappa>0$, for all $z$ in a neighbourhood of $y$,
+\[
+\bigl|w(z)-w(y)-\langle a,z-y\rangle-\tfrac12\langle A(z-y),z-y\rangle\bigr|\le\kappa|z-y|^2 .
+\]
+\end{lemma}
+\begin{proof}
+Let $h=z-y$. Since $|z|^2=|y|^2+2\langle y,h\rangle+|h|^2$, $\langle a,h\rangle=\langle a_0,h\rangle-\frac1\varepsilon\langle y,h\rangle$ and $\langle Ah,h\rangle=\langle A_0h,h\rangle-\frac1\varepsilon|h|^2$,
+\[
+w(z)-w(y)-\langle a,h\rangle-\tfrac12\langle Ah,h\rangle
+=F(z)-F(y)-\frac{2\langle y,h\rangle+|h|^2}{2\varepsilon}-\langle a_0,h\rangle+\frac{\langle y,h\rangle}\varepsilon-\tfrac12\langle A_0h,h\rangle+\frac{|h|^2}{2\varepsilon}
+=F(z)-F(y)-\langle a_0,h\rangle-\tfrac12\langle A_0h,h\rangle .
+\]
+By the little-$o$ hypothesis, for every $\kappa>0$ the absolute value of the right-hand side is at most $\kappa|h|^2$ for $z$ near $y$, which is the claim.
+\end{proof}

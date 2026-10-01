@@ -1,0 +1,31 @@
+\begin{lemma}[Transfer of second-order upper expansions through the sup-convolution]
+Let $n\ge0$, $\Omega\subseteq\mathbb R^n$, and let $L:\mathbb R^n\times\mathbb R^{n\times n}\to\mathbb R$ be such that $(\xi,X)\mapsto L(\xi,X)$ is continuous on $\mathbb R^n\times\mathbb S^n$ ($\mathbb S^n$ the symmetric matrices, with the relative topology). Let $f,u:\mathbb R^n\to\mathbb R$ with $u$ a viscosity subsolution of $L(\nabla u,\nabla^2u)=f$ in $\Omega$ (\noderef{IsViscositySubsolution}). Let $K\subseteq\Omega$ be compact, $\varepsilon>0$, and $u^\varepsilon=u^\varepsilon_K$ the sup-convolution of \noderef{SupConvolution}. Let $x\in\mathbb R^n$ and let $\hat x$ be an interior point of $K$ with
+\[
+u^\varepsilon(x)=u(\hat x)-\frac{|x-\hat x|^2}{2\varepsilon}.
+\]
+Let $a\in\mathbb R^n$ and $A\in\mathbb S^n$, and assume that for every $\delta>0$ the inequality
+\[
+u^\varepsilon(z)\le u^\varepsilon(x)+\langle a,z-x\rangle+\tfrac12\langle A(z-x),z-x\rangle+\delta|z-x|^2
+\]
+holds for all $z$ in some neighbourhood of $x$. Then $L(a,A)\le f(\hat x)$.
+\end{lemma}
+\begin{proof}
+\emph{Preliminaries.} $K$ is nonempty since $\hat x\in K$, and $u$ is upper semicontinuous on $\Omega$ by clause (i) of \noderef{IsViscositySubsolution}, hence on $K\subseteq\Omega$. So \noderef{supConvolution_properties}(i) applies: $u(y)-|z-y|^2/(2\varepsilon)\le u^\varepsilon(z)$ for all $z\in\mathbb R^n$, $y\in K$.
+
+\emph{Step 1.} Fix $\delta>0$. Choose $\rho_1>0$ such that the assumed inequality (with this $\delta$) holds for $|z-x|<\rho_1$, and $\rho_2>0$ with $B(\hat x,\rho_2)\subseteq K$ ($\hat x$ is interior). Let $\rho=\min(\rho_1,\rho_2)$.
+
+\emph{Step 2 (touching $u$ from above at $\hat x$).} Let $z'\in B(\hat x,\rho)$; then $z'\in K$. Put $z=z'+(x-\hat x)$, so $z-x=z'-\hat x$, $|z-x|<\rho_1$ and $z-z'=x-\hat x$. By \noderef{supConvolution_properties}(i) applied at the point $z$ with $y=z'$,
+\[
+u(z')\le u^\varepsilon(z)+\frac{|x-\hat x|^2}{2\varepsilon}.
+\]
+By the assumed inequality at $z$ and the hypothesis $u^\varepsilon(x)+\frac{|x-\hat x|^2}{2\varepsilon}=u(\hat x)$,
+\[
+u(z')\le u(\hat x)+\langle a,z'-\hat x\rangle+\tfrac12\langle A(z'-\hat x),z'-\hat x\rangle+\delta|z'-\hat x|^2
+=P_\delta(z'),
+\]
+where $P_\delta(y)=u(\hat x)+\langle a,y-\hat x\rangle+\tfrac12\langle(A+2\delta I)(y-\hat x),y-\hat x\rangle$ (note $\frac12\langle 2\delta I h,h\rangle=\delta|h|^2$). Since $P_\delta(\hat x)=u(\hat x)$, we get $u(z')-P_\delta(z')\le0=u(\hat x)-P_\delta(\hat x)$ for all $z'\in B(\hat x,\rho)$: $u-P_\delta$ attains a local maximum at $\hat x$.
+
+\emph{Step 3.} $\hat x\in K\subseteq\Omega$ and $A+2\delta I$ is symmetric. By \noderef{quadratic_test_subsolution} (with $z=\hat x$, $c=u(\hat x)$, $a$, and the symmetric matrix $A+2\delta I$), $L(a,A+2\delta I)\le f(\hat x)$.
+
+\emph{Step 4 ($\delta\to0$).} The points $(a,A+2\delta I)$, $\delta>0$, lie in $\mathbb R^n\times\mathbb S^n$ and converge to $(a,A)\in\mathbb R^n\times\mathbb S^n$ as $\delta\to0^+$. By continuity of $L$ on $\mathbb R^n\times\mathbb S^n$, $L(a,A+2\delta I)\to L(a,A)$. Passing to the limit in $L(a,A+2\delta I)\le f(\hat x)$ gives $L(a,A)\le f(\hat x)$.
+\end{proof}

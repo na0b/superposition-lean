@@ -1,0 +1,14 @@
+\begin{lemma}[Lipschitz images of null sets are null]
+Let $n\ge0$, let $\mathrm{vol}$ be Lebesgue measure on $\mathbb R^n$ (Lean: \texttt{volume} on \texttt{EuclideanSpace ℝ (Fin n)}), let $f:\mathbb R^n\to\mathbb R^n$, $s\subseteq\mathbb R^n$ and $K\ge0$, and assume $|f(x)-f(x')|\le K|x-x'|$ for all $x,x'\in s$. If $\mathrm{vol}(s)=0$ (outer measure), then $\mathrm{vol}(f(s))=0$.
+\end{lemma}
+\begin{proof}
+If $n=0$, $\mathbb R^0$ is a single point of measure $1$, so $\mathrm{vol}(s)=0$ forces $s=\emptyset$ and $f(s)=\emptyset$. Let $n\ge1$. (Lebesgue measure on Euclidean $\mathbb R^n$ is the product Lebesgue measure in the standard coordinates, the coordinate map being a measure-preserving isometry; closed cubes below are axis-parallel in these coordinates.)
+
+Let $\eta>0$. By outer regularity of Lebesgue measure there is an open set $U\supseteq s$ with $\mathrm{vol}(U)<\eta$. Every open subset of $\mathbb R^n$ is a countable union of closed dyadic cubes $Q_i$ with pairwise disjoint interiors, so $\sum_i\mathrm{vol}(Q_i)=\mathrm{vol}(U)<\eta$. Let $\ell_i$ be the side of $Q_i$, so $\mathrm{vol}(Q_i)=\ell_i^n$ and $\operatorname{diam}Q_i=\sqrt n\,\ell_i$.
+
+Let $I$ be the set of $i$ with $Q_i\cap s\ne\emptyset$, and for $i\in I$ fix $s_i\in Q_i\cap s$. For $x\in Q_i\cap s$, $|f(x)-f(s_i)|\le K|x-s_i|\le K\sqrt n\,\ell_i$, so $f(Q_i\cap s)$ lies in the closed ball of radius $K\sqrt n\,\ell_i$ about $f(s_i)$, which lies in the closed cube centred at $f(s_i)$ of side $2K\sqrt n\,\ell_i$, of volume $(2K\sqrt n)^n\ell_i^n$. Since $s=\bigcup_{i\in I}(Q_i\cap s)$, we have $f(s)=\bigcup_{i\in I}f(Q_i\cap s)$, and countable subadditivity gives
+\[
+\mathrm{vol}(f(s))\le\sum_{i\in I}(2K\sqrt n)^n\ell_i^n\le(2K\sqrt n)^n\sum_i\mathrm{vol}(Q_i)<(2K\sqrt n)^n\,\eta .
+\]
+As $\eta>0$ is arbitrary, $\mathrm{vol}(f(s))=0$.
+\end{proof}

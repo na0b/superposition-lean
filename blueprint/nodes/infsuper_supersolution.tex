@@ -1,0 +1,12 @@
+\begin{theorem}[Superposition in disjoint variables for the infinity Laplacian: supersolutions; paper Theorem infsuper]
+Let $\mathcal U\subseteq\mathbb R^n$ and $\mathcal V\subseteq\mathbb R^m$ be domains (\noderef{IsOpenDomain}). Suppose $f\in C(\mathcal U)$ and $g\in C(\mathcal V)$. Assume that $u:\mathbb R^n\to\mathbb R$ is a viscosity supersolution to $-\Delta_\infty u(x)=f(x)$ in $\mathcal U$ and $v:\mathbb R^m\to\mathbb R$ is a viscosity supersolution to $-\Delta_\infty v(y)=g(y)$ in $\mathcal V$, in the sense of \noderef{IsViscositySupersolution} with the operator $L_\infty(\xi,X)=-\langle X\xi,\xi\rangle$ of \noderef{InfLaplaceOperator}. Then $w(x,y)=u(x)+v(y)$ is a viscosity supersolution to
+\[
+-\Delta_\infty w(x,y)=f(x)+g(y)\quad\text{in }\mathcal U\times\mathcal V\subseteq\mathbb R^n\times\mathbb R^m ,
+\]
+where $\mathbb R^n\times\mathbb R^m$ is identified with $\mathbb R^{n+m}$ by concatenating coordinates ($x=\operatorname{fst}z$ from \noderef{EuclidFst}, $y=\operatorname{snd}z$ from \noderef{EuclidSnd}), $\mathcal U\times\mathcal V=\{z:\operatorname{fst}z\in\mathcal U,\operatorname{snd}z\in\mathcal V\}$, $w(z)=u(\operatorname{fst}z)+v(\operatorname{snd}z)$, and the right-hand side is $f(\operatorname{fst}z)+g(\operatorname{snd}z)$.
+\end{theorem}
+\begin{proof}
+This is the paper's remark that the argument also applies to supersolutions, realized by negation. Let $\Omega=\{z:\operatorname{fst}z\in\mathcal U,\operatorname{snd}z\in\mathcal V\}$.
+
+By \noderef{infLaplace_supersolution_iff_neg} ($\Rightarrow$, applied in $\mathbb R^n$ to $u,f,\mathcal U$ and in $\mathbb R^m$ to $v,g,\mathcal V$), $-u$ is a viscosity subsolution of $L_\infty=-f$ in $\mathcal U$ and $-v$ is one of $L_\infty=-g$ in $\mathcal V$. The functions $-f$, $-g$ are continuous on $\mathcal U$, $\mathcal V$. By \noderef{infsuper_subsolution} (applied to $-f,-g,-u,-v$), the function $z\mapsto(-u)(\operatorname{fst}z)+(-v)(\operatorname{snd}z)=-w(z)$ is a viscosity subsolution in $\Omega$ of $L_\infty=z\mapsto(-f)(\operatorname{fst}z)+(-g)(\operatorname{snd}z)=-F(z)$, where $F(z)=f(\operatorname{fst}z)+g(\operatorname{snd}z)$ (pointwise identities of functions). By \noderef{infLaplace_supersolution_iff_neg} ($\Leftarrow$, in $\mathbb R^{n+m}$ with $\Omega$, $F$ and $w$), $w$ is a viscosity supersolution of $L_\infty(\nabla w,\nabla^2w)=F$, i.e.\ of $-\Delta_\infty w=f(x)+g(y)$, in $\Omega$.
+\end{proof}

@@ -1,0 +1,12 @@
+\begin{definition}[Viscosity subsolution of $L(\nabla u,\nabla^2u)=f$, paper Def.~def-vis]
+Let $n\ge0$, $\Omega\subseteq\mathbb R^n$, $L:\mathbb R^n\times\mathbb R^{n\times n}\to\mathbb R$ and $f,u:\mathbb R^n\to\mathbb R$. We say that $u$ is a \emph{viscosity subsolution of $L(\nabla u,\nabla^2u)=f$ in $\Omega$} if
+\begin{enumerate}
+\item[(i)] $u$ is upper semicontinuous on $\Omega$ (relative to $\Omega$: for every $x\in\Omega$ and $t>u(x)$ there is a neighbourhood $U$ of $x$ with $u<t$ on $U\cap\Omega$), and
+\item[(ii)] whenever $x_0\in\Omega$ and $\psi:\mathbb R^n\to\mathbb R$ is $C^2$ on $\Omega$ (continuously twice differentiable on $\Omega$; Lean \texttt{ContDiffOn ℝ 2 ψ Ω}) are such that $u-\psi$ attains a local maximum at $x_0$ (i.e.\ $u(x)-\psi(x)\le u(x_0)-\psi(x_0)$ for all $x$ in some neighbourhood of $x_0$ in $\mathbb R^n$), we have
+\[
+L\bigl(\nabla\psi(x_0),\nabla^2\psi(x_0)\bigr)\le f(x_0),
+\]
+where $\nabla\psi(x_0)$ is the gradient (the vector representing $D\psi(x_0)$ via the inner product) and $\nabla^2\psi(x_0)$ is the Hessian matrix of \noderef{EuclidHessian}.
+\end{enumerate}
+For an open set $\Omega$ (the only case used), neighbourhoods of $x_0\in\Omega$ may be taken inside $\Omega$, the values of $u,f,\psi$ outside $\Omega$ are irrelevant, and this is exactly the paper's Definition def-vis of a viscosity subsolution $u\in USC(\Omega)$ of $L(\nabla u,\nabla^2u)=f$, i.e.\ of $\tilde L(x,\xi,X)=L(\xi,X)-f(x)=0$, with test functions $\psi\in C^2(\Omega)$.
+\end{definition}

@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+      - name: Check axioms of the main theorems
+        run: |
+          lake env lean Axioms.lean | tee axioms.txt
+          ! grep -v "\[propext, Classical.choice, Quot.sound\]" axioms.txt

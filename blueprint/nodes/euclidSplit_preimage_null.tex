@@ -1,0 +1,14 @@
+\begin{lemma}[Preimages of null sets under the block projections are null]
+Let $n,m\ge0$ and let $\mathrm{vol}$ denote Lebesgue (outer) measure on $\mathbb R^n$, $\mathbb R^m$ and $\mathbb R^{n+m}$ (Lean: \texttt{volume} on the corresponding \texttt{EuclideanSpace}). With the block maps of \noderef{EuclidFst} and \noderef{EuclidSnd}:
+\begin{enumerate}
+\item[(i)] if $N\subseteq\mathbb R^n$ has $\mathrm{vol}(N)=0$, then $\mathrm{vol}\{z\in\mathbb R^{n+m}:\operatorname{fst}z\in N\}=0$;
+\item[(ii)] if $N\subseteq\mathbb R^m$ has $\mathrm{vol}(N)=0$, then $\mathrm{vol}\{z\in\mathbb R^{n+m}:\operatorname{snd}z\in N\}=0$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(i) Since $N$ is null, there is a Borel set $N'\supseteq N$ with $\mathrm{vol}(N')=0$ (a measurable hull). Under the concatenation of coordinates $\mathbb R^{n+m}\cong\mathbb R^n\times\mathbb R^m$, $z\mapsto(\operatorname{fst}z,\operatorname{snd}z)$ (a bijection that merely relabels coordinates), Lebesgue measure on $\mathbb R^{n+m}$ corresponds to the product of Lebesgue measures on $\mathbb R^n$ and $\mathbb R^m$ (both are the product of $n+m$ copies of one-dimensional Lebesgue measure, and the Euclidean-space volume is the coordinate product measure). The set $\{z:\operatorname{fst}z\in N'\}$ corresponds to $N'\times\mathbb R^m=\bigcup_{k\ge1}N'\times[-k,k]^m$, and each $N'\times[-k,k]^m$ is a Borel set of product measure $\mathrm{vol}(N')\,(2k)^m=0$. By countable subadditivity $\mathrm{vol}\{z:\operatorname{fst}z\in N'\}=0$, and by monotonicity $\mathrm{vol}\{z:\operatorname{fst}z\in N\}=0$.
+
+(ii) Identical, with $\mathbb R^n\times N'=\bigcup_k[-k,k]^n\times N'$.
+
+(Equivalently: $\operatorname{fst}$ and $\operatorname{snd}$ are surjective linear maps, and the preimage of a Lebesgue-null set under a surjective linear map between Euclidean spaces is Lebesgue-null; Mathlib \texttt{ae\_comp\_linearMap\_mem\_iff}.)
+\end{proof}

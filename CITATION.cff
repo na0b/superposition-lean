@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this formalization, please cite the paper and this repository."
+title: "Lean 4 formalization of: Superposition property in disjoint variables for the infinity Laplace equation"
+type: software
+license: Apache-2.0
+authors:
+  - family-names: Liu
+    given-names: Qing
+    affiliation: Okinawa Institute of Science and Technology Graduate University
+  - family-names: Manfredi
+    given-names: Juan J.
+    affiliation: University of Pittsburgh
+  - family-names: Zhou
+    given-names: Xiaodan
+    affiliation: Okinawa Institute of Science and Technology Graduate University
+preferred-citation:
+  type: article
+  title: "Superposition property in disjoint variables for the infinity Laplace equation"
+  authors:
+    - family-names: Liu
+      given-names: Qing
+    - family-names: Manfredi
+      given-names: Juan J.
+    - family-names: Zhou
+      given-names: Xiaodan
+  journal: "RIMS Kôkyûroku Bessatsu"
+  volume: "B99"
+  year: 2026
+  start: 19
+  end: 34
+  identifiers:
+    - type: other
+      value: "arXiv:2508.17106"

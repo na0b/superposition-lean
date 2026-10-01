@@ -1,0 +1,78 @@
+\begin{lemma}[Sum of subsolutions against a strict quadratic maximum]
+Let $n\ge0$, $\Omega\subseteq\mathbb R^n$, $f,g:\mathbb R^n\to\mathbb R$ continuous on $\Omega$ (relative to $\Omega$), and let $L:\mathbb R^n\times\mathbb R^{n\times n}\to\mathbb R$ be continuous on $\mathbb R^n\times\mathbb S^n$ ($\mathbb S^n$ the symmetric matrices), elliptic in the sense of \noderef{IsDegenerateElliptic} and subadditive in the sense of \noderef{IsSubadditiveOperator}. Let $u,v:\mathbb R^n\to\mathbb R$ be viscosity subsolutions (\noderef{IsViscositySubsolution}) in $\Omega$ of $L(\nabla u,\nabla^2u)=f$ and of $L(\nabla v,\nabla^2v)=g$, respectively. Let $x_0\in\mathbb R^n$ and $r>0$ with $\overline B(x_0,r)\subseteq\Omega$, let $q_0\in\mathbb R$, $c\in\mathbb R^n$, $P\in\mathbb S^n$, and
+\[
+Q(y)=q_0+\langle c,y-x_0\rangle+\tfrac12\langle P(y-x_0),y-x_0\rangle .
+\]
+Assume that $u+v-Q$ has a strict maximum over $\overline B(x_0,r)$ at $x_0$:
+\[
+u(y)+v(y)-Q(y)<u(x_0)+v(x_0)-q_0\qquad\text{for all }y\in\overline B(x_0,r)\setminus\{x_0\}.
+\]
+Then $L(c,P)\le f(x_0)+g(x_0)$.
+\end{lemma}
+\begin{proof}
+\emph{Relation to the paper's proof.} The paper proves Theorem super-common by applying the Theorem on Sums (Lemma TOS, [CIL, Theorem 3.2]) through the argument of Proposition Lapsup, producing jets $(\xi_\varepsilon+\nabla\varphi(x_\varepsilon),X_\varepsilon+\nabla^2\varphi(x_\varepsilon))$ of $u$ and $(\eta_\varepsilon,Y_\varepsilon)$ of $v$ with $\xi_\varepsilon=-\eta_\varepsilon$ and $X_\varepsilon+Y_\varepsilon\le0$, and then concluding by the chain (test-L). The sup-convolution/Jensen/Alexandrov steps below are exactly the standard proof of the Theorem on Sums (Crandall--Ishii--Lions, Theorem 3.2 and Appendix; the proof via sup-convolutions, Jensen's lemma and Alexandrov's theorem), specialized to the present situation of \emph{common} variables and an operator independent of $x$: in this case the jets produced are genuine second-order superjets of the sup-convolutions at a single point $y$, which are transferred to $u$ and $v$ at nearby points $\hat y,\hat y'$ by \noderef{supConvolution_jet_transfer}; no closure of semijets is needed. The final step is the paper's chain (test-L) verbatim: ellipticity, then subadditivity, then the two subsolution inequalities, then continuity.
+
+\emph{Notation.} $K=\overline B(x_0,r)$ (compact, nonempty, $K\subseteq\Omega$); $w=u+v$; $m_0=w(x_0)-q_0=w(x_0)-Q(x_0)$. By clause (i) of \noderef{IsViscositySubsolution}, $u,v$ are upper semicontinuous on $\Omega$, hence on $K$. An upper semicontinuous function on a nonempty compact set is bounded above (it attains its maximum, by the argument in which a maximizing sequence has a convergent subsequence); fix $M_u\ge\sup_Ku$, $M_v\ge\sup_Kv$, and $M_Q\ge\sup_K|Q|$ ($Q$ is continuous). Let $\|P\|$ be the operator norm, so $\langle Ph,h\rangle\le\|P\|\,|h|^2$. Since $P$ is symmetric, expanding gives for all $y,h$
+\[
+Q(y+h)=Q(y)+\langle c+P(y-x_0),h\rangle+\tfrac12\langle Ph,h\rangle . \tag{1}
+\]
+For $\varepsilon>0$ let $u^\varepsilon=u^\varepsilon_K$, $v^\varepsilon=v^\varepsilon_K$ (\noderef{SupConvolution}) and $W_\varepsilon=u^\varepsilon+v^\varepsilon-Q$. By \noderef{supConvolution_properties} (applied to $u$ and to $v$ on $K$): (i) $u(y)-\frac{|x-y|^2}{2\varepsilon}\le u^\varepsilon(x)$ for $y\in K$; (ii) for each $x$ there is $\hat x\in K$ with $u^\varepsilon(x)=u(\hat x)-\frac{|x-\hat x|^2}{2\varepsilon}$; (iii) $F_u^\varepsilon(x)=u^\varepsilon(x)+\frac{|x|^2}{2\varepsilon}$ is convex; and likewise for $v$. By (i) with $x=y=x_0$, $u^\varepsilon(x_0)\ge u(x_0)$ and $v^\varepsilon(x_0)\ge v(x_0)$, so
+\[
+W_\varepsilon(x_0)\ge m_0 . \tag{2}
+\]
+
+\emph{Claim A (concentration).} For every $\rho\in(0,r]$ there are $\beta_\rho>0$ and $\varepsilon_\rho>0$ such that $W_\varepsilon(y)\le m_0-\beta_\rho$ for all $\varepsilon\in(0,\varepsilon_\rho)$ and all $y\in A_\rho=\{y:\rho\le|y-x_0|\le r\}$.
+
+\noindent\emph{Proof of Claim A.} If $A_\rho=\emptyset$ any $\beta_\rho,\varepsilon_\rho>0$ work. Otherwise $w-Q$ is upper semicontinuous on the compact nonempty set $A_\rho\subseteq K$ and attains its maximum $m_\rho$ there at some $y_\rho\ne x_0$, so $m_\rho<m_0$ by the strict maximum hypothesis; let $\beta_\rho=\frac12(m_0-m_\rho)>0$. Suppose no $\varepsilon_\rho$ works. Then there are $\varepsilon_k\in(0,1/k)$ and $y_k\in A_\rho$ with $W_{\varepsilon_k}(y_k)>m_0-\beta_\rho$. Take $\hat y_k,\hat y'_k\in K$ as in (ii) for $u^{\varepsilon_k}(y_k)$ and $v^{\varepsilon_k}(y_k)$. Then
+\[
+u(\hat y_k)+v(\hat y'_k)-Q(y_k)-\frac{|y_k-\hat y_k|^2+|y_k-\hat y'_k|^2}{2\varepsilon_k}=W_{\varepsilon_k}(y_k)>m_0-\beta_\rho .
+\]
+Hence $u(\hat y_k)+v(\hat y'_k)-Q(y_k)>m_0-\beta_\rho$ and $|y_k-\hat y_k|^2+|y_k-\hat y'_k|^2<2\varepsilon_kC_0$ with $C_0=M_u+M_v+M_Q-m_0+\beta_\rho$. By compactness of $A_\rho$, along a subsequence $y_k\to y^*\in A_\rho$, and then $\hat y_k\to y^*$, $\hat y'_k\to y^*$ (as $\varepsilon_k\to0$). Let $t>0$. Upper semicontinuity of $u$ and $v$ on $K$ at $y^*\in K$ (with $\hat y_k,\hat y'_k\in K$) and continuity of $Q$ give, for large $k$, $u(\hat y_k)<u(y^*)+t$, $v(\hat y'_k)<v(y^*)+t$, $Q(y_k)>Q(y^*)-t$, so $m_0-\beta_\rho<w(y^*)-Q(y^*)+3t$. Letting $t\to0$, $w(y^*)-Q(y^*)\ge m_0-\beta_\rho=\frac12(m_0+m_\rho)>m_\rho$, contradicting the definition of $m_\rho$ since $y^*\in A_\rho$. This proves Claim A.
+
+\emph{Choice of parameters.} Fix $\sigma>0$. Since $L$ is continuous on $\mathbb R^n\times\mathbb S^n$ at $(c,P)$, and $f,g$ are continuous on $\Omega$ at $x_0\in K\subseteq\Omega$, choose $\rho\in(0,r/2]$ such that
+\[
+L(\xi,P)\ge L(c,P)-\sigma\ \text{ if }|\xi-c|\le(\|P\|+1)\rho,\qquad f(y')\le f(x_0)+\sigma,\ g(y')\le g(x_0)+\sigma\ \text{ if }y'\in\Omega,\ |y'-x_0|<2\rho. \tag{3}
+\]
+Let $\beta=\beta_\rho$, $\varepsilon_\rho$ be as in Claim A and $C_0=M_u+M_v+M_Q-m_0+\beta$. Choose $\varepsilon\in(0,\varepsilon_\rho)$ with $2\varepsilon\max(C_0,0)<\rho^2$, and $\delta$ with $0<\delta<\min\bigl(\rho,\frac{\beta}{2r}\bigr)$.
+
+\emph{Semiconvexity of $W_\varepsilon$.} Let $\lambda=\|P\|$ and $C_W=\frac2\varepsilon+\lambda\ge0$. Then
+\[
+W_\varepsilon(x)+\tfrac{C_W}2|x|^2=F_u^\varepsilon(x)+F_v^\varepsilon(x)+\Bigl(\tfrac\lambda2|x|^2-Q(x)\Bigr).
+\]
+The first two terms are convex by (iii). For the third, $\frac\lambda2|x|^2=\frac\lambda2|x-x_0|^2+\lambda\langle x_0,x-x_0\rangle+\frac\lambda2|x_0|^2$, so $\frac\lambda2|x|^2-Q(x)=\frac12\langle(\lambda I-P)(x-x_0),x-x_0\rangle+(\text{affine function of }x)$; the matrix $\lambda I-P$ is symmetric with $\langle(\lambda I-P)h,h\rangle\ge0$, and a quadratic form $\kappa(h)=\frac12\langle Gh,h\rangle$ with such $G$ is convex because $t\kappa(h_1)+(1-t)\kappa(h_2)-\kappa(th_1+(1-t)h_2)=\frac12t(1-t)\langle G(h_1-h_2),h_1-h_2\rangle\ge0$. Hence $W_\varepsilon+\frac{C_W}2|\cdot|^2$ is convex on $\mathbb R^n$ (a sum of convex functions).
+
+\emph{Jensen.} For $|y-x_0|=r$ we have $y\in A_\rho$ (as $\rho\le r$), so by Claim A and (2), $W_\varepsilon(y)+2\delta r\le m_0-\beta+2\delta r<m_0\le W_\varepsilon(x_0)$. By \noderef{jensen_positive_measure} (with $W=W_\varepsilon$, $C=C_W$, $x_*=x_0$), the set $K_\delta$ of $y\in B(x_0,r)$ for which some $p$ with $|p|\le\delta$ satisfies $W_\varepsilon(y')+\langle p,y'\rangle\le W_\varepsilon(y)+\langle p,y\rangle$ for all $y'\in K$ has $\mathrm{vol}(K_\delta)>0$.
+
+\emph{Alexandrov.} By \noderef{alexandrov_convex} applied to the convex functions $F_u^\varepsilon$ and $F_v^\varepsilon$, there are null sets $N_u,N_v$ outside of which these functions admit second-order expansions. Since $\mathrm{vol}(K_\delta)\le\mathrm{vol}(K_\delta\setminus(N_u\cup N_v))+\mathrm{vol}(N_u)+\mathrm{vol}(N_v)$, the set $K_\delta\setminus(N_u\cup N_v)$ has positive measure, so we can pick $y$ in it, with a witness $p$, $|p|\le\delta$. There are $a_u,b_v\in\mathbb R^n$ and symmetric $A_u,B_v$ with $F_u^\varepsilon(y+h)-F_u^\varepsilon(y)-\langle a_u,h\rangle-\frac12\langle A_uh,h\rangle=o(|h|^2)$ and similarly for $F_v^\varepsilon$ with $(b_v,B_v)$. Since exactly $\frac{|y+h|^2}{2\varepsilon}=\frac{|y|^2}{2\varepsilon}+\langle\frac y\varepsilon,h\rangle+\frac12\langle\frac1\varepsilon Ih,h\rangle$, putting $a=a_u-\frac y\varepsilon$, $A=A_u-\frac1\varepsilon I$, $b=b_v-\frac y\varepsilon$, $B=B_v-\frac1\varepsilon I$ (all $A,B$ symmetric) we get, for every $\kappa>0$ and all small $|h|$,
+\[
+\bigl|u^\varepsilon(y+h)-u^\varepsilon(y)-\langle a,h\rangle-\tfrac12\langle Ah,h\rangle\bigr|\le\kappa|h|^2,\qquad \bigl|v^\varepsilon(y+h)-v^\varepsilon(y)-\langle b,h\rangle-\tfrac12\langle Bh,h\rangle\bigr|\le\kappa|h|^2. \tag{4}
+\]
+
+\emph{Location of $y$, $\hat y$, $\hat y'$.} By the maximality defining $K_\delta$ (with $y'=x_0$) and (2), $W_\varepsilon(y)\ge W_\varepsilon(x_0)-\langle p,y-x_0\rangle\ge m_0-\delta r>m_0-\beta$ (as $2\delta r<\beta$). By Claim A, $y\notin A_\rho$; since $y\in K$, $|y-x_0|<\rho$. Take $\hat y,\hat y'\in K$ as in (ii) for $u^\varepsilon(y)$, $v^\varepsilon(y)$. Then
+\[
+\frac{|y-\hat y|^2+|y-\hat y'|^2}{2\varepsilon}=u(\hat y)+v(\hat y')-Q(y)-W_\varepsilon(y)\le M_u+M_v+M_Q-m_0+\beta=C_0,
+\]
+so $|y-\hat y|,|y-\hat y'|\le\sqrt{2\varepsilon\max(C_0,0)}<\rho$, hence $|\hat y-x_0|,|\hat y'-x_0|<2\rho\le r$. Thus $\hat y,\hat y'\in B(x_0,r)$, which consists of interior points of $K$.
+
+\emph{First- and second-order conditions at $y$.} Since $y\in B(x_0,r)$, for all sufficiently small $|h|$ we have $y+h\in K$ and so $W_\varepsilon(y+h)+\langle p,h\rangle\le W_\varepsilon(y)$. Put $\gamma=a+b-c-P(y-x_0)+p$ and $G=A+B-P$ (symmetric). By (1) and (4) with a fixed $\kappa>0$, for all small $|h|$,
+\[
+0\ge W_\varepsilon(y+h)-W_\varepsilon(y)+\langle p,h\rangle\ge\langle\gamma,h\rangle+\tfrac12\langle Gh,h\rangle-2\kappa|h|^2 .
+\]
+For a unit vector $e$ and small $t>0$, taking $h=\pm te$ gives $\pm t\langle\gamma,e\rangle\le(2\kappa+\frac12\|G\|)t^2$; dividing by $t$ and letting $t\to0^+$ yields $\langle\gamma,e\rangle=0$ for all $e$, so $\gamma=0$, i.e.
+\[
+a+b=c+P(y-x_0)-p .
+\]
+Then with $h=te$: $\frac12t^2\langle Ge,e\rangle\le2\kappa t^2$, so $\langle Ge,e\rangle\le4\kappa$; as $\kappa>0$ is arbitrary, $\langle Ge,e\rangle\le0$ for all $e$. Hence $P-(A+B)$ is symmetric and positive semidefinite, i.e.\ $P\ge A+B$.
+
+\emph{Subsolution inequalities via jet transfer.} By (4), for every $\kappa>0$, $u^\varepsilon(z)\le u^\varepsilon(y)+\langle a,z-y\rangle+\frac12\langle A(z-y),z-y\rangle+\kappa|z-y|^2$ for $z$ near $y$; moreover $u^\varepsilon(y)=u(\hat y)-\frac{|y-\hat y|^2}{2\varepsilon}$ with $\hat y$ interior to $K$, $K\subseteq\Omega$ compact, $A$ symmetric. By \noderef{supConvolution_jet_transfer} (with $x=y$, $\hat x=\hat y$), $L(a,A)\le f(\hat y)$. In the same way $L(b,B)\le g(\hat y')$.
+
+\emph{The chain (test-L) and the limit.} Let $\xi=c+P(y-x_0)-p=a+b$. Ellipticity (\noderef{IsDegenerateElliptic}, with $X=P\ge Y=A+B$, both symmetric), then subadditivity (\noderef{IsSubadditiveOperator}, $A,B$ symmetric), then the two subsolution inequalities give
+\[
+L(\xi,P)\le L(\xi,A+B)=L(a+b,A+B)\le L(a,A)+L(b,B)\le f(\hat y)+g(\hat y').
+\]
+Finally, $|\xi-c|\le\|P\|\,|y-x_0|+|p|\le\|P\|\rho+\delta\le(\|P\|+1)\rho$ and $\hat y,\hat y'\in K\subseteq\Omega$ with $|\hat y-x_0|,|\hat y'-x_0|<2\rho$, so by the continuity choices (3),
+\[
+L(c,P)-\sigma\le L(\xi,P)\le f(\hat y)+g(\hat y')\le f(x_0)+g(x_0)+2\sigma .
+\]
+Since $\sigma>0$ was arbitrary, $L(c,P)\le f(x_0)+g(x_0)$.
+\end{proof}

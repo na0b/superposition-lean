@@ -1,0 +1,13 @@
+\begin{definition}[$\ell^1$ product metric]
+For metric spaces $(\mathbf X,d_{\mathbf X})$ and $(\mathbf Y,d_{\mathbf Y})$, the $\ell^1$ product $\mathbf X\times\mathbf Y$ (Mathlib: \texttt{WithLp 1 (X × Y)}) is the set of pairs $z=(x,y)$ with coordinate projections $z\mapsto x$ (\texttt{z.fst}) and $z\mapsto y$ (\texttt{z.snd}), equipped with the metric
+\[
+d_1((x_1,y_1),(x_2,y_2))=d_{\mathbf X}(x_1,x_2)+d_{\mathbf Y}(y_1,y_2)
+\]
+(Mathlib: \texttt{WithLp.prod\_dist\_eq\_add}). Its topology is the product topology and the pair $(x,y)$ is written \texttt{WithLp.toLp 1 (x, y)} in Lean.
+\end{definition}
+\begin{definition}[Proper metric space]
+A metric space is \emph{proper} if every closed ball is compact (Mathlib: \texttt{ProperSpace}).
+\end{definition}
+\begin{definition}[Bounded set, closure, boundary]
+A subset $A$ of a metric space is bounded if $\sup_{a,b\in A}d(a,b)<\infty$ (Mathlib: \texttt{Bornology.IsBounded}). $\overline A$ denotes the closure of $A$ and $\partial A=\overline A\setminus\operatorname{int}A$ its boundary (Mathlib: \texttt{closure}, \texttt{frontier}).
+\end{definition}

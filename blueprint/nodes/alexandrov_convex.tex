@@ -1,0 +1,26 @@
+\begin{theorem}[Alexandrov's theorem for convex functions]
+Let $n\ge0$ and let $F:\mathbb R^n\to\mathbb R$ be convex on $\mathbb R^n$. Then for Lebesgue-almost every $x\in\mathbb R^n$ there exist $a\in\mathbb R^n$ and a symmetric real $n\times n$ matrix $A$ such that
+\[
+F(y)-F(x)-\langle a,y-x\rangle-\tfrac12\langle A(y-x),y-x\rangle=o(|y-x|^2)\qquad\text{as }y\to x
+\]
+(for every $\kappa>0$ the absolute value of the left-hand side is at most $\kappa|y-x|^2$ for $y$ in a neighbourhood of $x$).
+\end{theorem}
+\begin{proof}
+Call $q$ a subgradient of $F$ at $y$, and write $q\in\partial F(y)$, if $F(y)+\langle q,w-y\rangle\le F(w)$ for all $w$. By \noderef{convex_exists_subgradient}, $\partial F(y)\ne\emptyset$ for every $y$. Let $P:\mathbb R^n\to\mathbb R^n$ be the map of \noderef{convex_prox_map}: (i) $z-P(z)\in\partial F(P(z))$ for all $z$; (ii) $P$ is $1$-Lipschitz; (iii) $P(y+q)=y$ whenever $q\in\partial F(y)$. Let $\mathrm{vol}$ denote Lebesgue measure.
+
+\emph{Step 1 (exceptional set).} By Rademacher's theorem (a Lipschitz map $\mathbb R^n\to\mathbb R^n$ is differentiable at almost every point; Mathlib \texttt{LipschitzWith.ae\_differentiableAt}), the set $N_2$ of points where $P$ is not differentiable has $\mathrm{vol}(N_2)=0$. By \noderef{lipschitz_image_null} (with $s=N_2$, $K=1$), $\mathrm{vol}(P(N_2))=0$. Let $S$ be the set of $z$ at which $P$ is differentiable with $\det DP(z)=0$. By the null-image theorem for singular derivatives (the easy case of Sard's theorem: if $f$ is differentiable at every point of a set $S$ with a derivative of zero determinant there, then $\mathrm{vol}(f(S))=0$; Mathlib \texttt{addHaar\_image\_eq\_zero\_of\_det\_fderivWithin\_eq\_zero}), $\mathrm{vol}(P(S))=0$. Put $N=P(N_2)\cup P(S)$; then $\mathrm{vol}(N)=0$. We show that the conclusion holds at every $x\notin N$; this proves the theorem.
+
+\emph{Step 2 (a good preimage).} Fix $x\notin N$. Choose $a\in\partial F(x)$ and put $z=x+a$; by (iii), $P(z)=x$. If $z\in N_2$ then $x=P(z)\in P(N_2)$, and if $z\in S$ then $x\in P(S)$; both are excluded. Hence $P$ is differentiable at $z$ and $D:=DP(z)$ is an invertible linear map. Let $B=D^{-1}$ and $m=1/(\|B\|+1)>0$; then $|v|=|BDv|\le\|B\|\,|Dv|$ gives $|Dv|\ge m|v|$, and $|Bv|\le|v|/m$, for all $v$.
+
+\emph{Step 3 ($\partial F(x)=\{a\}$).} Let $a'\in\partial F(x)$. For $t\in[0,1]$, $a_t=(1-t)a+ta'\in\partial F(x)$ (a convex combination of the two subgradient inequalities), so by (iii) $P(z+t(a'-a))=P(x+a_t)=x=P(z)$. Differentiability of $P$ at $z$ gives $P(z+t(a'-a))-P(z)-tD(a'-a)=o(t)$ as $t\to0^+$, i.e.\ $tD(a'-a)=o(t)$, so $D(a'-a)=0$ and, $D$ being injective, $a'=a$.
+
+\emph{Step 4 (subgradients near $x$ are close to $a$).} Claim: for every $\sigma>0$ there is $\tau>0$ such that $|q-a|<\sigma$ whenever $|y-x|<\tau$ and $q\in\partial F(y)$. Suppose not: then there are $\sigma>0$, $y_k\to x$ and $q_k\in\partial F(y_k)$ with $|q_k-a|\ge\sigma$. By \noderef{convex_locally_lipschitz} with centre $x$ and radius $1$ there is $\Lambda$ with $|q|\le\Lambda$ for $q\in\partial F(y)$, $|y-x|\le1$, and $|F(y)-F(x)|\le\Lambda|y-x|$ for $|y-x|\le1$. For large $k$, $|y_k-x|\le1$, so $|q_k|\le\Lambda$, and a subsequence converges to some $q^*$ with $|q^*-a|\ge\sigma$. For each fixed $w$, $F(w)\ge F(y_k)+\langle q_k,w-y_k\rangle$; letting $k\to\infty$ along the subsequence ($F(y_k)\to F(x)$ by the Lipschitz bound) gives $F(w)\ge F(x)+\langle q^*,w-x\rangle$. So $q^*\in\partial F(x)=\{a\}$, contradicting $|q^*-a|\ge\sigma$.
+
+\emph{Step 5 (first-order expansion of subgradients).} Let $A_0'=B-\mathrm{Id}$ (a linear map of $\mathbb R^n$). Claim: for every $\kappa>0$ there is $\tau>0$ such that $|q-a-A_0'(y-x)|\le\kappa|y-x|$ whenever $|y-x|<\tau$ and $q\in\partial F(y)$. Fix $\kappa>0$ and put $\theta=\min(m/2,\kappa m^2/2)>0$. By differentiability of $P$ at $z$ choose $\tau_\theta>0$ with $|P(z')-P(z)-D(z'-z)|\le\theta|z'-z|$ for $|z'-z|<\tau_\theta$. By Step 4 choose $\tau\in(0,\tau_\theta/2]$ such that $|q-a|<\tau_\theta/2$ whenever $|y-x|<\tau$, $q\in\partial F(y)$. Now let such $y,q$ be given and put $z'=y+q$. By (iii), $P(z')=y$; and $z'-z=(y-x)+(q-a)$, so $|z'-z|<\tau_\theta$. Let $e=P(z')-P(z)-D(z'-z)=(y-x)-D(z'-z)$; then $|e|\le\theta|z'-z|$. Hence
+\[
+m|z'-z|\le|D(z'-z)|=|(y-x)-e|\le|y-x|+\tfrac m2|z'-z|,\qquad\text{so}\qquad|z'-z|\le\tfrac2m|y-x| .
+\]
+Applying $B$ to $D(z'-z)=(y-x)-e$ gives $z'-z-B(y-x)=-Be$, so $|z'-z-B(y-x)|\le|e|/m\le\frac\theta m|z'-z|\le\frac{2\theta}{m^2}|y-x|\le\kappa|y-x|$. Finally $q-a-A_0'(y-x)=(z'-z)-(y-x)-B(y-x)+(y-x)=z'-z-B(y-x)$, which proves the claim.
+
+\emph{Step 6 (conclusion).} Let $A_0$ be the matrix of $A_0'$ in the standard basis, $(A_0)_{ij}=\langle e_i,A_0'e_j\rangle$, so that $A_0h=A_0'h$ for all $h$. By Step 5 and \noderef{convex_second_order_of_subgradient_expansion} (applied to $F$, $x$, $a$, $A_0$), the symmetric matrix $A=\frac12(A_0+A_0^T)$ satisfies $F(y)-F(x)-\langle a,y-x\rangle-\frac12\langle A(y-x),y-x\rangle=o(|y-x|^2)$ as $y\to x$. As this holds for every $x\notin N$ and $\mathrm{vol}(N)=0$, the theorem is proved.
+\end{proof}

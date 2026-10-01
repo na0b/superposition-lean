@@ -1,0 +1,9 @@
+\begin{definition}[Hessian matrix]
+Let $n\ge 0$ and identify $\mathbb R^n$ with Euclidean space (Lean: \texttt{EuclideanSpace ℝ (Fin n)}), with standard basis $e_1,\dots,e_n$. For $\psi:\mathbb R^n\to\mathbb R$ let $D\psi(x)$ denote the Fr\'echet derivative of $\psi$ at $x$ (a linear map $\mathbb R^n\to\mathbb R$), with the convention that $D\psi(x)=0$ when $\psi$ is not differentiable at $x$ (Mathlib's \texttt{fderiv}); likewise $D^2\psi(x)=D(D\psi)(x)$ is the Fr\'echet derivative at $x$ of the map $y\mapsto D\psi(y)$ (with the same convention), so that $D^2\psi(x)(h)(k)\in\mathbb R$ for $h,k\in\mathbb R^n$.
+
+The \emph{Hessian matrix} of $\psi$ at $x$ is the $n\times n$ real matrix $\nabla^2\psi(x)$ with entries
+\[
+\bigl(\nabla^2\psi(x)\bigr)_{ij}=D^2\psi(x)(e_i)(e_j),\qquad 1\le i,j\le n .
+\]
+When $\psi$ is $C^2$ in a neighbourhood of $x$, this is the usual matrix of second partial derivatives $\partial_i\partial_j\psi(x)$ appearing as $\nabla^2\psi$ in the paper.
+\end{definition}

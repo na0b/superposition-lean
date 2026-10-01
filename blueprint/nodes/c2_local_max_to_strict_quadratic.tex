@@ -1,0 +1,38 @@
+\begin{lemma}[Reduction to a strict maximum against a quadratic]
+Let $n\ge0$, let $\Omega\subseteq\mathbb R^n$ be open, let $\psi:\mathbb R^n\to\mathbb R$ be $C^2$ on $\Omega$, let $w:\mathbb R^n\to\mathbb R$, and let $x_0\in\Omega$ be such that $w-\psi$ attains a local maximum at $x_0$. Let $\eta>0$. Write $H=\nabla^2\psi(x_0)$ for the Hessian matrix of \noderef{EuclidHessian}, $I$ for the identity matrix, and
+\[
+Q_\eta(y)=\psi(x_0)+\langle\nabla\psi(x_0),y-x_0\rangle+\tfrac12\langle (H+2\eta I)(y-x_0),y-x_0\rangle .
+\]
+Then $H$ is symmetric, and there is $r>0$ such that $\overline B(x_0,r)\subseteq\Omega$ and
+\[
+w(y)-Q_\eta(y)\le w(x_0)-\psi(x_0)-\frac\eta2|y-x_0|^2\qquad\text{for all }y\in\overline B(x_0,r).
+\]
+In particular (as $Q_\eta(x_0)=\psi(x_0)$) $w-Q_\eta$ has a strict maximum over $\overline B(x_0,r)$ at $x_0$.
+\end{lemma}
+\begin{proof}
+\emph{Step 1 (regularity).} Since $\Omega$ is open and $\psi$ is $C^2$ on $\Omega$, $\psi$ is differentiable at every point of $\Omega$, the map $y\mapsto D\psi(y)$ is $C^1$ on $\Omega$, and $D^2\psi=D(D\psi)$ exists at every point of $\Omega$ and is continuous on $\Omega$ as a map into bilinear forms (operator norm $\|\cdot\|$).
+
+\emph{Step 2 (symmetry of $H$).} $\psi$ is $C^2$ on the neighbourhood $\Omega$ of $x_0$, so by Schwarz's theorem $D^2\psi(x_0)(h)(k)=D^2\psi(x_0)(k)(h)$ for all $h,k$ (Mathlib: \texttt{ContDiffAt.isSymmSndFDerivAt}). Hence $H_{ij}=D^2\psi(x_0)(e_i)(e_j)=D^2\psi(x_0)(e_j)(e_i)=H_{ji}$.
+
+\emph{Step 3 (identities).} For $h=\sum_ih_ie_i$, bilinearity gives $D^2\psi(x_0)(h)(h)=\sum_{i,j}h_ih_jH_{ij}=\langle Hh,h\rangle$. By definition of the gradient, $D\psi(x_0)h=\langle\nabla\psi(x_0),h\rangle$. Also $\langle(H+2\eta I)h,h\rangle=\langle Hh,h\rangle+2\eta|h|^2$, so
+\[
+Q_\eta(x_0+h)=\psi(x_0)+D\psi(x_0)h+\tfrac12D^2\psi(x_0)(h)(h)+\eta|h|^2. \tag{1}
+\]
+
+\emph{Step 4 (choice of $r$).} Choose $\rho>0$ with $B(x_0,\rho)\subseteq\Omega$ ($\Omega$ open); choose $\rho'>0$ with $w(y)-\psi(y)\le w(x_0)-\psi(x_0)$ for $|y-x_0|<\rho'$ (local maximum); by continuity of $D^2\psi$ at $x_0$ (Step 1) choose $\rho''\in(0,\rho]$ with $\|D^2\psi(y)-D^2\psi(x_0)\|\le\eta$ for $|y-x_0|<\rho''$. Put $r=\frac12\min(\rho,\rho',\rho'')>0$. Then $\overline B(x_0,r)\subseteq B(x_0,\rho)\subseteq\Omega$.
+
+\emph{Step 5 (Taylor).} Let $y\in\overline B(x_0,r)$ and $h=y-x_0$, so $|h|\le r$. For $|t|<2$ we have $|th|<2r\le\rho$, so $x_0+th\in\Omega$; thus $g(t)=\psi(x_0+th)$ is $C^2$ on $(-2,2)$ with $g'(t)=D\psi(x_0+th)h$ and $g''(t)=D^2\psi(x_0+th)(h)(h)$ by the chain rule. Taylor's theorem with Lagrange remainder on $[0,1]$ gives $\theta\in(0,1)$ with $g(1)=g(0)+g'(0)+\frac12g''(\theta)$ (if $h=0$ this is trivial), i.e.
+\[
+\psi(y)=\psi(x_0)+D\psi(x_0)h+\tfrac12D^2\psi(x_0)(h)(h)+\tfrac12\bigl(D^2\psi(x_0+\theta h)-D^2\psi(x_0)\bigr)(h)(h).
+\]
+As $|\theta h|\le r<\rho''$, the last term is at most $\frac12\eta|h|^2$. Comparing with (1),
+\[
+\psi(y)\le Q_\eta(y)-\eta|h|^2+\tfrac12\eta|h|^2=Q_\eta(y)-\frac\eta2|h|^2 .
+\]
+
+\emph{Step 6 (conclusion).} Since $|h|\le r<\rho'$, $w(y)-\psi(y)\le w(x_0)-\psi(x_0)$. Therefore
+\[
+w(y)-Q_\eta(y)\le w(y)-\psi(y)-\frac\eta2|y-x_0|^2\le w(x_0)-\psi(x_0)-\frac\eta2|y-x_0|^2 .
+\]
+Finally $Q_\eta(x_0)=\psi(x_0)$, so the right-hand side equals $(w-Q_\eta)(x_0)-\frac\eta2|y-x_0|^2$, which is $<(w-Q_\eta)(x_0)$ for $y\ne x_0$.
+\end{proof}

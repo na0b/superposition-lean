@@ -1,0 +1,21 @@
+\begin{lemma}[Existence of subgradients]
+Let $n\ge0$ and let $F:\mathbb R^n\to\mathbb R$ be convex on $\mathbb R^n$. Then for every $x\in\mathbb R^n$ there is $q\in\mathbb R^n$ (a \emph{subgradient} of $F$ at $x$) such that
+\[
+F(x)+\langle q,y-x\rangle\le F(y)\qquad\text{for all }y\in\mathbb R^n.
+\]
+\end{lemma}
+\begin{proof}
+Fix $x$. For $h\in\mathbb R^n$ and $t>0$ put $D_h(t)=\frac{F(x+th)-F(x)}{t}$.
+
+\emph{Monotonicity.} For $0<s<t$, $x+sh=\frac st(x+th)+(1-\frac st)x$, so convexity gives $F(x+sh)\le\frac stF(x+th)+(1-\frac st)F(x)$, i.e.\ $F(x+sh)-F(x)\le\frac st(F(x+th)-F(x))$, i.e.\ $D_h(s)\le D_h(t)$.
+
+\emph{Lower bound.} For $t>0$, $x=\frac1{1+t}(x+th)+\frac t{1+t}(x-h)$, so $(1+t)F(x)\le F(x+th)+tF(x-h)$, i.e.\ $D_h(t)\ge F(x)-F(x-h)$.
+
+Hence $\varphi(h)=\inf_{t>0}D_h(t)$ is a real number for every $h$, and $\varphi(h)\le D_h(1)=F(x+h)-F(x)$.
+
+\emph{$\varphi$ is sublinear.} (a) For $\lambda>0$: $D_{\lambda h}(t)=\lambda D_h(\lambda t)$, and $t\mapsto\lambda t$ is a bijection of $(0,\infty)$, so $\varphi(\lambda h)=\lambda\varphi(h)$. (b) For $h,k$ and $t>0$: $x+t(h+k)=\frac12(x+2th)+\frac12(x+2tk)$, so $F(x+t(h+k))\le\frac12F(x+2th)+\frac12F(x+2tk)$, which rearranges to $D_{h+k}(t)\le D_h(2t)+D_k(2t)$. Given $s_1,s_2>0$ take $t=\frac12\min(s_1,s_2)$; by monotonicity $D_h(2t)\le D_h(s_1)$ and $D_k(2t)\le D_k(s_2)$, so $\varphi(h+k)\le D_h(s_1)+D_k(s_2)$. Taking the infimum over $s_1$ and then over $s_2$ gives $\varphi(h+k)\le\varphi(h)+\varphi(k)$.
+
+\emph{Hahn--Banach.} Apply the Hahn--Banach extension theorem (dominated version; Mathlib \texttt{exists\_extension\_of\_le\_sublinear}) to the zero functional on the subspace $\{0\}$, which is dominated by $\varphi$ there since $\varphi(0)=\inf_tD_0(t)=0$. It yields a linear functional $\ell:\mathbb R^n\to\mathbb R$ with $\ell(h)\le\varphi(h)$ for all $h$. Since $\mathbb R^n$ is a finite-dimensional inner product space, $\ell=\langle q,\cdot\rangle$ with $q=\sum_i\ell(e_i)e_i$.
+
+\emph{Conclusion.} For $y\in\mathbb R^n$ and $h=y-x$: $\langle q,y-x\rangle=\ell(h)\le\varphi(h)\le F(x+h)-F(x)=F(y)-F(x)$.
+\end{proof}

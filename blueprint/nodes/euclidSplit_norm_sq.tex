@@ -1,0 +1,12 @@
+\begin{lemma}[Pythagoras for the splitting $\mathbb R^{n+m}=\mathbb R^n\times\mathbb R^m$]
+Let $n,m\ge0$ and $z\in\mathbb R^{n+m}$. With the blocks $\operatorname{fst}z\in\mathbb R^n$ of \noderef{EuclidFst} and $\operatorname{snd}z\in\mathbb R^m$ of \noderef{EuclidSnd},
+\[
+|z|^2=|\operatorname{fst}z|^2+|\operatorname{snd}z|^2 .
+\]
+\end{lemma}
+\begin{proof}
+By definition of the Euclidean norm, $|z|^2=\sum_{k=1}^{n+m}z_k^2$. Splitting the index set $\{1,\dots,n+m\}$ into $\{1,\dots,n\}$ and $\{n+1,\dots,n+m\}$ (Lean: \texttt{Fin.sum\_univ\_add}, indices $\texttt{Fin.castAdd}\,m\,i$ and $\texttt{Fin.natAdd}\,n\,j$),
+\[
+|z|^2=\sum_{i=1}^nz_i^2+\sum_{j=1}^mz_{n+j}^2=\sum_{i=1}^n(\operatorname{fst}z)_i^2+\sum_{j=1}^m(\operatorname{snd}z)_j^2=|\operatorname{fst}z|^2+|\operatorname{snd}z|^2 .
+\]
+\end{proof}

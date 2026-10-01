@@ -1,0 +1,22 @@
+\begin{lemma}[Convexity of the quadratic correction]
+Let $n\ge0$, $x_0,c\in\mathbb R^n$, $q_0,\lambda\in\mathbb R$, and let $P$ be a symmetric real $n\times n$ matrix with $\langle Ph,h\rangle\le\lambda|h|^2$ for all $h\in\mathbb R^n$. Put $Q(x)=q_0+\langle c,x-x_0\rangle+\frac12\langle P(x-x_0),x-x_0\rangle$. Then the function
+\[
+x\mapsto\frac\lambda2|x|^2-Q(x)
+\]
+is convex on $\mathbb R^n$.
+\end{lemma}
+\begin{proof}
+Let $\kappa(x)=\frac\lambda2|x|^2-Q(x)$. Fix $x,y\in\mathbb R^n$ and put $d=x-y$. For $t\in\mathbb R$, expanding $|y+td|^2=|y|^2+2t\langle y,d\rangle+t^2|d|^2$ and, using the symmetry $\langle Pd,y-x_0\rangle=\langle P(y-x_0),d\rangle$,
+\[
+\langle P(y-x_0+td),y-x_0+td\rangle=\langle P(y-x_0),y-x_0\rangle+2t\langle P(y-x_0),d\rangle+t^2\langle Pd,d\rangle ,
+\]
+we get
+\[
+\kappa(y+td)=\kappa(y)+tK_1+t^2K_2,\qquad K_1=\lambda\langle y,d\rangle-\langle c,d\rangle-\langle P(y-x_0),d\rangle,\quad K_2=\tfrac\lambda2|d|^2-\tfrac12\langle Pd,d\rangle .
+\]
+By hypothesis $K_2\ge0$. Let $a,b\ge0$ with $a+b=1$. Then $ax+by=y+ad$ and $x=y+1\cdot d$, so
+\[
+a\kappa(x)+b\kappa(y)-\kappa(ax+by)=a(\kappa(y)+K_1+K_2)+(1-a)\kappa(y)-(\kappa(y)+aK_1+a^2K_2)=(a-a^2)K_2\ge0,
+\]
+since $0\le a\le1$ gives $a^2\le a$. Hence $\kappa$ is convex.
+\end{proof}

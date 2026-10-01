@@ -1,0 +1,10 @@
+\begin{theorem}[Superposition in disjoint variables for the infinity Laplacian: solutions; paper Theorem infsuper]
+Let $\mathcal U\subseteq\mathbb R^n$ and $\mathcal V\subseteq\mathbb R^m$ be domains (\noderef{IsOpenDomain}). Suppose $f\in C(\mathcal U)$ and $g\in C(\mathcal V)$. Assume that $u:\mathbb R^n\to\mathbb R$ is a viscosity solution to $-\Delta_\infty u(x)=f(x)$ in $\mathcal U$ and $v:\mathbb R^m\to\mathbb R$ is a viscosity solution to $-\Delta_\infty v(y)=g(y)$ in $\mathcal V$, in the sense of \noderef{IsViscositySolution} with the operator $L_\infty(\xi,X)=-\langle X\xi,\xi\rangle$ of \noderef{InfLaplaceOperator}. Then $w(x,y)=u(x)+v(y)$ is a viscosity solution to
+\[
+-\Delta_\infty w(x,y)=f(x)+g(y)\quad\text{in }\mathcal U\times\mathcal V\subseteq\mathbb R^n\times\mathbb R^m ,
+\]
+with $\mathcal U\times\mathcal V=\{z\in\mathbb R^{n+m}:\operatorname{fst}z\in\mathcal U,\operatorname{snd}z\in\mathcal V\}$, $w(z)=u(\operatorname{fst}z)+v(\operatorname{snd}z)$ and right-hand side $f(\operatorname{fst}z)+g(\operatorname{snd}z)$, where $\mathbb R^n\times\mathbb R^m$ is identified with $\mathbb R^{n+m}$ by concatenating coordinates ($x=\operatorname{fst}z$ from \noderef{EuclidFst}, $y=\operatorname{snd}z$ from \noderef{EuclidSnd}).
+\end{theorem}
+\begin{proof}
+By \noderef{IsViscositySolution}, $u$ is both a viscosity subsolution and a viscosity supersolution of $-\Delta_\infty u=f$ in $\mathcal U$, and likewise $v$ for $g$ in $\mathcal V$. By \noderef{infsuper_subsolution} (applied to the subsolution parts), $w$ is a viscosity subsolution of $-\Delta_\infty w=f(x)+g(y)$ in $\mathcal U\times\mathcal V$; by \noderef{infsuper_supersolution} (applied to the supersolution parts), $w$ is a viscosity supersolution of the same equation there. By \noderef{IsViscositySolution}, $w$ is a viscosity solution.
+\end{proof}

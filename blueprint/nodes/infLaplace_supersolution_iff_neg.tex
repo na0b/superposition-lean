@@ -1,0 +1,22 @@
+\begin{lemma}[Supersolutions of the infinity-Laplace equation via negation]
+Let $n\ge0$, $\Omega\subseteq\mathbb R^n$ and $f,u:\mathbb R^n\to\mathbb R$, and let $L_\infty(\xi,X)=-\langle X\xi,\xi\rangle$ be the operator of \noderef{InfLaplaceOperator}. Then $u$ is a viscosity supersolution of $L_\infty(\nabla u,\nabla^2u)=f$ in $\Omega$ (\noderef{IsViscositySupersolution}) if and only if $-u$ is a viscosity subsolution of $L_\infty(\nabla(-u),\nabla^2(-u))=-f$ in $\Omega$ (\noderef{IsViscositySubsolution}).
+\end{lemma}
+\begin{proof}
+\emph{Preliminary identities.} Let $\psi:\mathbb R^n\to\mathbb R$ and $x\in\mathbb R^n$.
+\begin{enumerate}
+\item[(a)] $D(-\psi)(y)=-D\psi(y)$ for every $y$: if $\psi$ is differentiable at $y$ this is linearity of the derivative, and otherwise $-\psi$ is not differentiable at $y$ either (as $\psi=-(-\psi)$), so both sides are $0$ by the convention of \noderef{EuclidHessian}. Hence $\nabla(-\psi)(x)=-\nabla\psi(x)$.
+\item[(b)] Applying (a) to the map $y\mapsto D\psi(y)$ (same argument for vector-valued maps), $D^2(-\psi)(x)=D(-D\psi)(x)=-D^2\psi(x)$, so by \noderef{EuclidHessian} $\nabla^2(-\psi)(x)=-\nabla^2\psi(x)$.
+\item[(c)] For all $\xi,X$: $L_\infty(-\xi,-X)=-\langle(-X)(-\xi),-\xi\rangle=-\bigl(-\langle X\xi,\xi\rangle\bigr)=-L_\infty(\xi,X)$.
+\item[(d)] $\psi$ is $C^2$ on $\Omega$ iff $-\psi$ is (the $C^2$ functions on $\Omega$ form a vector space).
+\item[(e)] $u-\psi$ has a local minimum at $x_0$ iff $(-u)-(-\psi)=-(u-\psi)$ has a local maximum at $x_0$.
+\item[(f)] $u$ is lower semicontinuous on $\Omega$ iff $-u$ is upper semicontinuous on $\Omega$: for $x\in\Omega$, "$t<u(x)\Rightarrow u>t$ near $x$ in $\Omega$" is, with $s=-t$, "$s>-u(x)\Rightarrow -u<s$ near $x$ in $\Omega$".
+\end{enumerate}
+Combining (a)--(c), for every $\psi$ and $x_0$,
+\[
+L_\infty\bigl(\nabla(-\psi)(x_0),\nabla^2(-\psi)(x_0)\bigr)=L_\infty\bigl(-\nabla\psi(x_0),-\nabla^2\psi(x_0)\bigr)=-L_\infty\bigl(\nabla\psi(x_0),\nabla^2\psi(x_0)\bigr). \tag{$*$}
+\]
+
+\emph{($\Rightarrow$).} Assume $u$ is a supersolution. Clause (i) for $-u$ holds by (f). For clause (ii), let $x_0\in\Omega$ and $\varphi$ be $C^2$ on $\Omega$ with $(-u)-\varphi$ having a local maximum at $x_0$. Put $\psi=-\varphi$; by (d) $\psi$ is $C^2$ on $\Omega$, and $u-\psi=-((-u)-\varphi)$ has a local minimum at $x_0$ by (e). The supersolution property gives $f(x_0)\le L_\infty(\nabla\psi(x_0),\nabla^2\psi(x_0))$. By $(*)$ with $-\psi=\varphi$, $L_\infty(\nabla\varphi(x_0),\nabla^2\varphi(x_0))=-L_\infty(\nabla\psi(x_0),\nabla^2\psi(x_0))\le-f(x_0)$, which is clause (ii) for $-u$ with right-hand side $-f$.
+
+\emph{($\Leftarrow$).} Assume $-u$ is a subsolution with right-hand side $-f$. Clause (i) for $u$ holds by (f). Let $x_0\in\Omega$ and $\psi$ be $C^2$ on $\Omega$ with $u-\psi$ having a local minimum at $x_0$. Then $-\psi$ is $C^2$ on $\Omega$ (d) and $(-u)-(-\psi)$ has a local maximum at $x_0$ (e), so $L_\infty(\nabla(-\psi)(x_0),\nabla^2(-\psi)(x_0))\le-f(x_0)$. By $(*)$ this reads $-L_\infty(\nabla\psi(x_0),\nabla^2\psi(x_0))\le-f(x_0)$, i.e.\ $f(x_0)\le L_\infty(\nabla\psi(x_0),\nabla^2\psi(x_0))$, which is clause (ii) of the supersolution property.
+\end{proof}

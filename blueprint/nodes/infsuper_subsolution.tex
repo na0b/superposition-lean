@@ -1,0 +1,30 @@
+\begin{theorem}[Superposition in disjoint variables for the infinity Laplacian: subsolutions; paper Theorem infsuper]
+Let $\mathcal U\subseteq\mathbb R^n$ and $\mathcal V\subseteq\mathbb R^m$ be domains (\noderef{IsOpenDomain}: open, nonempty, connected). Suppose $f\in C(\mathcal U)$ and $g\in C(\mathcal V)$ (i.e.\ $f:\mathbb R^n\to\mathbb R$ continuous on $\mathcal U$, $g:\mathbb R^m\to\mathbb R$ continuous on $\mathcal V$). Assume that $u:\mathbb R^n\to\mathbb R$ is a viscosity subsolution to
+\[
+-\Delta_\infty u(x)=f(x)\quad\text{in }\mathcal U
+\]
+and $v:\mathbb R^m\to\mathbb R$ is a viscosity subsolution to
+\[
+-\Delta_\infty v(y)=g(y)\quad\text{in }\mathcal V,
+\]
+in the sense of \noderef{IsViscositySubsolution} with the operator $L_\infty(\xi,X)=-\langle X\xi,\xi\rangle$ of \noderef{InfLaplaceOperator} (so $L_\infty(\nabla\psi,\nabla^2\psi)=-\Delta_\infty\psi$). Then $w(x,y)=u(x)+v(y)$ is a viscosity subsolution to
+\[
+-\Delta_\infty w(x,y)=f(x)+g(y)\quad\text{in }\mathcal U\times\mathcal V\subseteq\mathbb R^n\times\mathbb R^m .
+\]
+Here $\mathbb R^n\times\mathbb R^m$ is identified with $\mathbb R^{n+m}$ by concatenating coordinates, $(x,y)\leftrightarrow z$ with $x=\operatorname{fst}z$ (\noderef{EuclidFst}) and $y=\operatorname{snd}z$ (\noderef{EuclidSnd}); thus $\mathcal U\times\mathcal V$ is the set $\{z\in\mathbb R^{n+m}:\operatorname{fst}z\in\mathcal U,\ \operatorname{snd}z\in\mathcal V\}$, $w(z)=u(\operatorname{fst}z)+v(\operatorname{snd}z)$, and the right-hand side is $z\mapsto f(\operatorname{fst}z)+g(\operatorname{snd}z)$.
+\end{theorem}
+\begin{proof}
+Write $\Omega=\{z:\operatorname{fst}z\in\mathcal U,\ \operatorname{snd}z\in\mathcal V\}$, $w(z)=u(\operatorname{fst}z)+v(\operatorname{snd}z)$, $F(z)=f(\operatorname{fst}z)+g(\operatorname{snd}z)$. The block maps $\operatorname{fst},\operatorname{snd}$ are linear (coordinate selections), hence continuous. $\mathcal U,\mathcal V$ are open (domains), so $\Omega=\operatorname{fst}^{-1}(\mathcal U)\cap\operatorname{snd}^{-1}(\mathcal V)$ is open. We verify the two clauses of \noderef{IsViscositySubsolution} for $w$ on $\Omega$ with right-hand side $F$.
+
+\emph{(i) Upper semicontinuity.} Let $z\in\Omega$ and $t>w(z)$, $s=\frac12(t-w(z))>0$. By clause (i) for $u$, there is a neighbourhood $N_1$ of $\operatorname{fst}z$ with $u<u(\operatorname{fst}z)+s$ on $N_1\cap\mathcal U$; by clause (i) for $v$, a neighbourhood $N_2$ of $\operatorname{snd}z$ with $v<v(\operatorname{snd}z)+s$ on $N_2\cap\mathcal V$. Then $N=\operatorname{fst}^{-1}(N_1)\cap\operatorname{snd}^{-1}(N_2)$ is a neighbourhood of $z$ and for $z'\in N\cap\Omega$ we have $\operatorname{fst}z'\in N_1\cap\mathcal U$, $\operatorname{snd}z'\in N_2\cap\mathcal V$, so $w(z')<w(z)+2s=t$.
+
+\emph{(ii) Test functions.} Let $z_0\in\Omega$ and $\psi$ be $C^2$ on $\Omega$ with $w-\psi$ having a local maximum at $z_0$. Write $c=\nabla\psi(z_0)$ and $H=\nabla^2\psi(z_0)$ (\noderef{EuclidHessian}). Fix $\eta>0$. By \noderef{c2_local_max_to_strict_quadratic} (in dimension $n+m$, with the open set $\Omega$, $\psi$, $w$, $z_0$, $\eta$), $H$ is symmetric and there is $r>0$ with $\overline B(z_0,r)\subseteq\Omega$ and, with $Q_\eta(z)=\psi(z_0)+\langle c,z-z_0\rangle+\frac12\langle(H+2\eta I)(z-z_0),z-z_0\rangle$,
+\[
+w(z)-Q_\eta(z)\le w(z_0)-\psi(z_0)-\tfrac\eta2|z-z_0|^2<w(z_0)-\psi(z_0)\qquad(z\in\overline B(z_0,r)\setminus\{z_0\}).
+\]
+So the hypotheses of \noderef{disjoint_sum_quadratic_strict} hold with $q_0=\psi(z_0)$, $c$, and the symmetric matrix $P=H+2\eta I$ (together with continuity of $f$ on $\mathcal U$, of $g$ on $\mathcal V$, and the subsolution properties of $u,v$). It gives
+\[
+L_\infty(c,H+2\eta I)\le f(\operatorname{fst}z_0)+g(\operatorname{snd}z_0)=F(z_0).
+\]
+Since $L_\infty(c,H+2\eta I)=-\langle Hc,c\rangle-2\eta|c|^2=L_\infty(c,H)-2\eta|c|^2$, we get $L_\infty(c,H)\le F(z_0)+2\eta|c|^2$ for every $\eta>0$. Letting $\eta\to0^+$, $L_\infty(\nabla\psi(z_0),\nabla^2\psi(z_0))\le F(z_0)$, which is clause (ii). Hence $w$ is a viscosity subsolution of $-\Delta_\infty w=F$ in $\Omega$.
+\end{proof}

@@ -1,0 +1,84 @@
+\begin{lemma}[Sum in disjoint variables of infinity-Laplace subsolutions against a strict quadratic maximum]
+Let $n,m\ge0$, write $\operatorname{fst}:\mathbb R^{n+m}\to\mathbb R^n$ and $\operatorname{snd}:\mathbb R^{n+m}\to\mathbb R^m$ for the block maps of \noderef{EuclidFst}, \noderef{EuclidSnd}, and $L_\infty(\xi,X)=-\langle X\xi,\xi\rangle$ for the operator of \noderef{InfLaplaceOperator} (in each dimension). Let $\mathcal U\subseteq\mathbb R^n$, $\mathcal V\subseteq\mathbb R^m$, let $f:\mathbb R^n\to\mathbb R$ be continuous on $\mathcal U$ and $g:\mathbb R^m\to\mathbb R$ continuous on $\mathcal V$ (relative to these sets), and let $u:\mathbb R^n\to\mathbb R$, $v:\mathbb R^m\to\mathbb R$ be viscosity subsolutions (\noderef{IsViscositySubsolution}) of $L_\infty(\nabla u,\nabla^2u)=f$ in $\mathcal U$ and of $L_\infty(\nabla v,\nabla^2v)=g$ in $\mathcal V$, respectively. Let $z_0\in\mathbb R^{n+m}$ and $r>0$ with
+\[
+\overline B(z_0,r)\subseteq\{z\in\mathbb R^{n+m}:\operatorname{fst}z\in\mathcal U,\ \operatorname{snd}z\in\mathcal V\},
+\]
+let $q_0\in\mathbb R$, $c\in\mathbb R^{n+m}$, let $P$ be a symmetric real $(n+m)\times(n+m)$ matrix, and $Q(z)=q_0+\langle c,z-z_0\rangle+\frac12\langle P(z-z_0),z-z_0\rangle$. Put $x_0=\operatorname{fst}z_0$, $y_0=\operatorname{snd}z_0$ and assume the strict maximum
+\[
+u(\operatorname{fst}z)+v(\operatorname{snd}z)-Q(z)<u(x_0)+v(y_0)-q_0\qquad\text{for all }z\in\overline B(z_0,r)\setminus\{z_0\}.
+\]
+Then $L_\infty(c,P)\le f(x_0)+g(y_0)$, i.e.\ $-\langle Pc,c\rangle\le f(x_0)+g(y_0)$.
+\end{lemma}
+\begin{proof}
+\emph{Relation to the paper's proof.} The paper proves Theorem infsuper by applying the Theorem on Sums (Lemma TOS, [CIL, Theorem 3.2]) to $u(x)+v(y)-\varphi(x,y)$, which produces jets $(\xi,X_\varepsilon)$ of $u$ at $x_0$ and $(\eta,Y_\varepsilon)$ of $v$ at $y_0$ with $(\xi,\eta)=\nabla\varphi$ and the block inequality (2ndest) $\operatorname{diag}(X_\varepsilon,Y_\varepsilon)\le Z+\varepsilon Z^2$; multiplying (2ndest) by $\nabla\varphi$ on both sides gives $\langle X_\varepsilon\xi,\xi\rangle+\langle Y_\varepsilon\eta,\eta\rangle\le\langle Z\nabla\varphi,\nabla\varphi\rangle+C\varepsilon$, and the two subsolution inequalities conclude. The sup-convolution/Jensen/Alexandrov argument below is exactly the standard proof of the Theorem on Sums (Crandall--Ishii--Lions, Theorem 3.2 and its appendix: sup-convolution, Jensen's lemma, Alexandrov's theorem), specialized to \emph{disjoint} variables, just as in the common-variables node \texttt{sum\_subsolution\_quadratic\_strict}. It produces at one point $z$ a genuine second-order jet $(a,A)$ of $u^\varepsilon$ at $\operatorname{fst}z$ and $(b,B)$ of $v^\varepsilon$ at $\operatorname{snd}z$ with $\xi:=a\oplus b=c+P(z-z_0)-p$ and the block inequality $\operatorname{diag}(A,B)\le P$, the analogue of (2ndest); evaluating it at $\xi$ is the paper's multiplication of (2ndest) by the gradient, and the jets are transferred to $u,v$ at nearby points by \noderef{supConvolution_jet_transfer} (no closure of semijets is needed).
+
+\emph{Notation and block calculus.} For $x\in\mathbb R^n$, $y\in\mathbb R^m$ let $x\oplus y\in\mathbb R^{n+m}$ be the concatenation, so $\operatorname{fst}(x\oplus y)=x$, $\operatorname{snd}(x\oplus y)=y$ and $z=\operatorname{fst}z\oplus\operatorname{snd}z$. The maps $\operatorname{fst},\operatorname{snd}$ are linear (they select coordinates), and by \noderef{euclidSplit_norm_sq}, $|z|^2=|\operatorname{fst}z|^2+|\operatorname{snd}z|^2$; by polarization ($\langle z,w\rangle=\frac12(|z+w|^2-|z|^2-|w|^2)$ and linearity) also
+\[
+\langle z,w\rangle=\langle\operatorname{fst}z,\operatorname{fst}w\rangle+\langle\operatorname{snd}z,\operatorname{snd}w\rangle ,\qquad |\operatorname{fst}z|\le|z|,\ |\operatorname{snd}z|\le|z|. \tag{0}
+\]
+Write $h'=\operatorname{fst}h$, $h''=\operatorname{snd}h$. Let $K_1=\overline B(x_0,r)\subseteq\mathbb R^n$ and $K_2=\overline B(y_0,r)\subseteq\mathbb R^m$ (compact, nonempty), and $K=\overline B(z_0,r)$. Then $K_1\subseteq\mathcal U$: for $x\in K_1$ the point $x\oplus y_0$ satisfies $|x\oplus y_0-z_0|^2=|x-x_0|^2+0\le r^2$, so it lies in $K$, and hence $x=\operatorname{fst}(x\oplus y_0)\in\mathcal U$. Likewise $K_2\subseteq\mathcal V$ (use $x_0\oplus y$). Also $\operatorname{fst}(K)\subseteq K_1$ and $\operatorname{snd}(K)\subseteq K_2$ by (0). By clause (i) of \noderef{IsViscositySubsolution}, $u$ is upper semicontinuous on $\mathcal U\supseteq K_1$ and $v$ on $\mathcal V\supseteq K_2$; so $u$ attains a maximum $M_u$ on $K_1$ and $v$ a maximum $M_v$ on $K_2$ (upper semicontinuous functions on nonempty compact sets attain their maxima). Let $M_Q\ge\sup_K|Q|$ and $\|P\|$ the operator norm, so $\langle Ph,h\rangle\le\|P\|\,|h|^2$ and $|Ph|\le\|P\||h|$. Since $P$ is symmetric, for all $z,h$,
+\[
+Q(z+h)=Q(z)+\langle c+P(z-z_0),h\rangle+\tfrac12\langle Ph,h\rangle . \tag{1}
+\]
+Let $m_0=u(x_0)+v(y_0)-q_0=u(x_0)+v(y_0)-Q(z_0)$. For $\varepsilon>0$ let $u^\varepsilon=u^\varepsilon_{K_1}$, $v^\varepsilon=v^\varepsilon_{K_2}$ (\noderef{SupConvolution}) and
+\[
+W_\varepsilon(z)=u^\varepsilon(\operatorname{fst}z)+v^\varepsilon(\operatorname{snd}z)-Q(z).
+\]
+By \noderef{supConvolution_properties} (for $u$ on $K_1$ and $v$ on $K_2$): (i) $u(y)-\frac{|x-y|^2}{2\varepsilon}\le u^\varepsilon(x)$ for $y\in K_1$; (ii) for each $x$ there is $\hat x\in K_1$ with $u^\varepsilon(x)=u(\hat x)-\frac{|x-\hat x|^2}{2\varepsilon}$; (iii) $F_u^\varepsilon(x)=u^\varepsilon(x)+\frac{|x|^2}{2\varepsilon}$ is convex on $\mathbb R^n$; and likewise for $v$ on $K_2$ with $F_v^\varepsilon$ convex on $\mathbb R^m$. By (i) with $x=y=x_0$ and $x=y=y_0$,
+\[
+W_\varepsilon(z_0)\ge m_0 . \tag{2}
+\]
+
+\emph{Concentration.} $Q$ is continuous and the strict maximum hypothesis is exactly that of \noderef{disjoint_supConvolution_concentration} (with $u$ upper semicontinuous on $K_1$, $v$ on $K_2$). Hence for every $\rho>0$ there are $\beta_\rho,\varepsilon_\rho>0$ with $W_\varepsilon(z)\le m_0-\beta_\rho$ for all $\varepsilon\in(0,\varepsilon_\rho)$ and $z\in K$ with $|z-z_0|\ge\rho$.
+
+\emph{Choice of parameters.} Fix $\sigma>0$. The map $\xi\mapsto L_\infty(\xi,P)=-\langle P\xi,\xi\rangle$ is continuous (a polynomial), $f$ is continuous on $\mathcal U$ at $x_0\in K_1\subseteq\mathcal U$ and $g$ on $\mathcal V$ at $y_0\in K_2\subseteq\mathcal V$. Choose $\rho\in(0,r/2]$ such that
+\[
+L_\infty(\xi,P)\ge L_\infty(c,P)-\sigma\ \text{ if }|\xi-c|\le(\|P\|+1)\rho;\quad f(x')\le f(x_0)+\sigma\ \text{ if }x'\in\mathcal U,|x'-x_0|<2\rho;\quad g(y')\le g(y_0)+\sigma\ \text{ if }y'\in\mathcal V,|y'-y_0|<2\rho. \tag{3}
+\]
+Let $\beta=\beta_\rho$, $\varepsilon_\rho$ as in the concentration step, $C_0=M_u+M_v+M_Q-m_0+\beta$. Choose $\varepsilon\in(0,\varepsilon_\rho)$ with $2\varepsilon\max(C_0,0)<\rho^2$ and $\delta$ with $0<\delta<\min(\rho,\frac\beta{2r})$.
+
+\emph{Semiconvexity of $W_\varepsilon$.} Let $\lambda=\|P\|$ and $C_W=\frac1\varepsilon+\lambda\ge0$. Using $|z|^2=|\operatorname{fst}z|^2+|\operatorname{snd}z|^2$,
+\[
+W_\varepsilon(z)+\tfrac{C_W}2|z|^2=F_u^\varepsilon(\operatorname{fst}z)+F_v^\varepsilon(\operatorname{snd}z)+\Bigl(\tfrac\lambda2|z|^2-Q(z)\Bigr).
+\]
+The first two terms are convex on $\mathbb R^{n+m}$, being convex functions composed with linear maps ($F(\ell(tz_1+(1-t)z_2))=F(t\ell z_1+(1-t)\ell z_2)\le tF(\ell z_1)+(1-t)F(\ell z_2)$). The third is convex by \noderef{quadratic_convex_part} (in dimension $n+m$, with $\langle Ph,h\rangle\le\lambda|h|^2$). So $W_\varepsilon+\frac{C_W}2|\cdot|^2$ is convex on $\mathbb R^{n+m}$.
+
+\emph{Jensen.} If $|z-z_0|=r$ then $z\in K$ and $|z-z_0|\ge\rho$, so by concentration and (2), $W_\varepsilon(z)+2\delta r\le m_0-\beta+2\delta r<m_0\le W_\varepsilon(z_0)$. By \noderef{jensen_positive_measure} (in dimension $n+m$, with $W=W_\varepsilon$, $C=C_W$, $x_0=x_*=z_0$), the set $K_\delta$ of $z\in B(z_0,r)$ for which some $p\in\mathbb R^{n+m}$ with $|p|\le\delta$ satisfies $W_\varepsilon(z')+\langle p,z'\rangle\le W_\varepsilon(z)+\langle p,z\rangle$ for all $z'\in K$ has $\mathrm{vol}(K_\delta)>0$.
+
+\emph{Alexandrov.} By \noderef{alexandrov_convex} applied to the convex $F_u^\varepsilon$ on $\mathbb R^n$ and $F_v^\varepsilon$ on $\mathbb R^m$, there are null sets $N_u\subseteq\mathbb R^n$, $N_v\subseteq\mathbb R^m$ outside of which these functions have second-order expansions. By \noderef{euclidSplit_preimage_null}, $N=\{z:\operatorname{fst}z\in N_u\}\cup\{z:\operatorname{snd}z\in N_v\}$ is null in $\mathbb R^{n+m}$. As $\mathrm{vol}(K_\delta)\le\mathrm{vol}(K_\delta\setminus N)+\mathrm{vol}(N)$, $K_\delta\setminus N\ne\emptyset$; pick $z$ in it with witness $p$, $|p|\le\delta$, and put $\bar x=\operatorname{fst}z$, $\bar y=\operatorname{snd}z$. As $\bar x\notin N_u$, there are $a_0\in\mathbb R^n$ and a symmetric $A_0$ with $F_u^\varepsilon(x)-F_u^\varepsilon(\bar x)-\langle a_0,x-\bar x\rangle-\frac12\langle A_0(x-\bar x),x-\bar x\rangle=o(|x-\bar x|^2)$. By \noderef{expansion_sub_half_sq_norm} (with $w=u^\varepsilon$), $a=a_0-\frac1\varepsilon\bar x$ and the symmetric matrix $A=A_0-\frac1\varepsilon I$ satisfy: for every $\kappa>0$, for all $x$ near $\bar x$,
+\[
+\bigl|u^\varepsilon(x)-u^\varepsilon(\bar x)-\langle a,x-\bar x\rangle-\tfrac12\langle A(x-\bar x),x-\bar x\rangle\bigr|\le\kappa|x-\bar x|^2 . \tag{4}
+\]
+Likewise there are $b\in\mathbb R^m$ and a symmetric $B$ with the same property for $v^\varepsilon$ at $\bar y$. \hfill(4$'$)
+
+\emph{Location of $z$, $\hat x$, $\hat y$.} By the maximality defining $K_\delta$ (with $z'=z_0$) and (2), $W_\varepsilon(z)\ge W_\varepsilon(z_0)-\langle p,z-z_0\rangle\ge m_0-\delta r>m_0-\beta$ (as $|z-z_0|<r$ and $2\delta r<\beta$). By concentration, $|z-z_0|<\rho$; hence $|\bar x-x_0|,|\bar y-y_0|<\rho$ by (0). Take $\hat x\in K_1$, $\hat y\in K_2$ as in (ii) for $u^\varepsilon(\bar x)$, $v^\varepsilon(\bar y)$. Then
+\[
+\frac{|\bar x-\hat x|^2+|\bar y-\hat y|^2}{2\varepsilon}=u(\hat x)+v(\hat y)-Q(z)-W_\varepsilon(z)\le M_u+M_v+M_Q-m_0+\beta=C_0 ,
+\]
+so $|\bar x-\hat x|,|\bar y-\hat y|\le\sqrt{2\varepsilon\max(C_0,0)}<\rho$ and $|\hat x-x_0|,|\hat y-y_0|<2\rho\le r$. Thus $\hat x\in B(x_0,r)$ and $\hat y\in B(y_0,r)$ are interior points of $K_1$ and $K_2$.
+
+\emph{First- and second-order conditions (block form of (2ndest)).} Let $D$ be the block-diagonal $(n+m)\times(n+m)$ matrix with $D(h)=A h'\oplus B h''$ (entries of $A$ in the first $n$ rows and columns, of $B$ in the last $m$, zero elsewhere); $D$ is symmetric and by (0) $\langle Dh,h\rangle=\langle Ah',h'\rangle+\langle Bh'',h''\rangle$. Let $\xi=a\oplus b$, so $\langle\xi,h\rangle=\langle a,h'\rangle+\langle b,h''\rangle$ by (0). Put $\gamma=\xi-c-P(z-z_0)+p$ and $G=D-P$ (symmetric). Fix $\kappa>0$. Since $z\in B(z_0,r)$, for all sufficiently small $|h|$ we have $z+h\in K$, hence $W_\varepsilon(z+h)+\langle p,h\rangle\le W_\varepsilon(z)$, and (4), (4$'$) apply at $\bar x+h'$, $\bar y+h''$ (as $|h'|,|h''|\le|h|$). Using (1), (4), (4$'$) and $|h'|^2+|h''|^2=|h|^2$,
+\[
+0\ge W_\varepsilon(z+h)-W_\varepsilon(z)+\langle p,h\rangle\ge\langle\gamma,h\rangle+\tfrac12\langle Gh,h\rangle-\kappa|h|^2 .
+\]
+Thus for every $\kappa>0$ there is $\eta>0$ with $\langle\gamma,h\rangle+\frac12\langle Gh,h\rangle\le\kappa|h|^2$ for $|h|<\eta$. By \noderef{quadratic_upper_bound_conditions}, $\gamma=0$ and $\langle Ge,e\rangle\le0$ for all $e$, i.e.
+\[
+\xi=a\oplus b=c+P(z-z_0)-p,\qquad \langle Ae',e'\rangle+\langle Be'',e''\rangle=\langle De,e\rangle\le\langle Pe,e\rangle\ \text{ for all }e\in\mathbb R^{n+m}.
+\]
+Taking $e=\xi$ (so $e'=a$, $e''=b$) --- the paper's multiplication of (2ndest) by the gradient on both sides ---
+\[
+\langle Aa,a\rangle+\langle Bb,b\rangle\le\langle P\xi,\xi\rangle . \tag{5}
+\]
+
+\emph{Subsolution inequalities via jet transfer.} $L_\infty$ is continuous on $\mathbb R^n\times\mathbb R^{n\times n}$ (a polynomial), in particular on $\mathbb R^n\times\mathbb S^n$. By (4), for every $\kappa>0$, $u^\varepsilon(x)\le u^\varepsilon(\bar x)+\langle a,x-\bar x\rangle+\frac12\langle A(x-\bar x),x-\bar x\rangle+\kappa|x-\bar x|^2$ near $\bar x$; also $u^\varepsilon(\bar x)=u(\hat x)-\frac{|\bar x-\hat x|^2}{2\varepsilon}$ with $\hat x$ interior to the compact set $K_1\subseteq\mathcal U$, and $A$ is symmetric. By \noderef{supConvolution_jet_transfer} (with $\Omega=\mathcal U$, $L=L_\infty$, $K=K_1$, $x=\bar x$), $L_\infty(a,A)=-\langle Aa,a\rangle\le f(\hat x)$. In the same way (with $\mathcal V$, $K_2$, $\bar y$, $\hat y$, $v$, $g$), $-\langle Bb,b\rangle\le g(\hat y)$.
+
+\emph{The chain and the limit.} By (5) and the two subsolution inequalities,
+\[
+L_\infty(\xi,P)=-\langle P\xi,\xi\rangle\le-\langle Aa,a\rangle-\langle Bb,b\rangle\le f(\hat x)+g(\hat y).
+\]
+Now $|\xi-c|=|P(z-z_0)-p|\le\|P\|\rho+\delta\le(\|P\|+1)\rho$, $\hat x\in K_1\subseteq\mathcal U$ with $|\hat x-x_0|<2\rho$, and $\hat y\in K_2\subseteq\mathcal V$ with $|\hat y-y_0|<2\rho$. By (3),
+\[
+L_\infty(c,P)-\sigma\le L_\infty(\xi,P)\le f(\hat x)+g(\hat y)\le f(x_0)+g(y_0)+2\sigma .
+\]
+As $\sigma>0$ was arbitrary, $L_\infty(c,P)\le f(x_0)+g(y_0)$.
+\end{proof}

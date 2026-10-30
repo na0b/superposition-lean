@@ -1,9 +1,13 @@
-import Superposition.IsGeodesicSpace
-import Superposition.IsOpenDomain
-import Superposition.ConeComparisonAbove
-import Superposition.slice_right_admissible
-import Superposition.slice_left_admissible
-import Superposition.disjointSum_continuousOn_locallyBddAbove
+module
+
+public import Superposition.IsGeodesicSpace
+public import Superposition.IsOpenDomain
+public import Superposition.ConeComparisonAbove
+public import Superposition.slice_right_admissible
+public import Superposition.slice_left_admissible
+public import Superposition.disjointSum_continuousOn_locallyBddAbove
+
+@[expose] public section
 
 set_option linter.unusedVariables false in
 /-- Paper, Theorem "Superposition for comparison with cones" (comparison from above), with the

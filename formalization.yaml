@@ -1,0 +1,157 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Superposition in disjoint variables for the infinity Laplace equation"
+  description: >-
+    A complete Lean 4 / Mathlib formalization of the three main theorems of Liu, Manfredi and Zhou,
+    "Superposition property in disjoint variables for the infinity Laplace equation" (RIMS
+    Kôkyûroku Bessatsu B99 (2026); arXiv:2508.17106). If u is a viscosity subsolution
+    (resp. supersolution, solution) of -Δ∞u = f in a domain U ⊆ ℝⁿ and v one of -Δ∞v = g in a
+    domain V ⊆ ℝᵐ, with f and g continuous, then w(x, y) = u(x) + v(y) is a viscosity subsolution
+    (resp. supersolution, solution) of -Δ∞w = f(x) + g(y) in U × V. For a continuous, degenerate
+    elliptic and sub-additive operator L, the sum of viscosity subsolutions of L(∇u, ∇²u) = f and
+    L(∇v, ∇²v) = g is a subsolution of L(∇w, ∇²w) = f + g. On proper geodesic metric spaces, the
+    disjoint sum of functions satisfying comparison with cones (from above, below, or both)
+    satisfies comparison with cones on the product with the sum metric d_X + d_Y. Mathlib lacks
+    the Crandall–Ishii–Lions theorem on sums, so its ingredients (sup-convolution, Alexandrov's
+    theorem, Jensen's lemma) are formalized along the way; there is no sorry and no axiom beyond
+    propext, Classical.choice and Quot.sound.
+  authors:
+    - "Qing Liu"
+    - "Juan J. Manfredi"
+    - "Xiaodan Zhou"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Juan J. Manfredi"
+
+classification:
+  arxiv: [math.AP, math.MG]
+  msc2020: [35J94, 35D40, 35J70, 30L99, 68V20]
+
+sources:
+  - title: "Superposition property in disjoint variables for the infinity Laplace equation"
+    authors:
+      - "Qing Liu"
+      - "Juan J. Manfredi"
+      - "Xiaodan Zhou"
+    id: "arXiv:2508.17106"
+    type: paper
+    location: "https://arxiv.org/abs/2508.17106"
+    relationship: formalizes
+    note: >-
+      Published in RIMS Kôkyûroku Bessatsu B99 (2026), 19–34. The three main theorems are
+      formalized; the paper's authors are the authors of this formalization.
+    author_endorsement: participated
+
+related_formalizations: []
+
+status:
+  scope: >-
+    Formalized in full, with everything their proofs use: Theorem "Superposition in disjoint
+    variables for the infinity Laplacian" (subsolution, supersolution and solution cases),
+    Theorem "Subsolutions of sub-additive equations", and Theorem "Superposition for comparison
+    with cones" (from above, from below, from both sides). Not formalized: Proposition
+    "Superposition for Laplacian", Proposition "Subsolutions of convex equations", and the
+    paper's remarks.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: agent
+      models: ["Claude Opus 5 (Anthropic)"]
+      framework: "Trellis (https://github.com/wpegden/trellis)"
+      tool_setup: >-
+        Trellis multi-agent formalization pipeline: planner, reviewer and worker agents write a
+        dependency graph of natural-language nodes (a blueprint) and their Lean proofs; separate
+        verifier agents check each node's natural-language proof for soundness, its faithfulness
+        to the paper, and agreement between its Lean and natural-language statements; the Lean
+        kernel checks every proof. A human approves the phase gates.
+      cost:
+        wall_time: "about 7.5 hours (2026-09-19), 49 cycles"
+        spend_usd: "subscription-based"
+        hardware: "local machine (Linux workstation) plus subscription model access"
+      prompting_notes: "Standard Trellis prompts; the input was the paper's LaTeX source and the choice of target theorems."
+    - method: agent
+      models: ["Claude Opus 5 (Anthropic)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        Export from the Trellis workspace to this repository, the port to Lean v4.35.0-rc2 and
+        the module system, and the Challenge/Solution/Comparator packaging for Palomar, done by
+        Claude Code under the maintainer's direction.
+      cost:
+        wall_time: "a few hours"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "subscription-based"
+  notes: >-
+    The Lean proofs and the blueprint were written by AI agents under the Trellis protocol.
+    Juan J. Manfredi chose the targets, supervised the run and approved the phase gates; he is
+    responsible for the repository.
+
+fidelity:
+  divergences: >-
+    No deviation from the paper was authorized during the run. Representation choices: functions
+    are total on the ambient space and only their values on the domain enter; viscosity
+    sub/supersolutions use C² test functions on the domain and local extrema; ellipticity and
+    sub-additivity are imposed on symmetric matrices; 𝒪 ⊂⊂ Ω in comparison with cones is
+    expressed as 𝒪 open and bounded with compact closure contained in Ω; the product metric d₁ is
+    Mathlib's WithLp 1 (X × Y); ℝⁿ × ℝᵐ is modelled as ℝⁿ⁺ᵐ with coordinate projections. The
+    Euclidean theorems are proved from formalized ingredients of the Crandall–Ishii–Lions theorem
+    on sums (sup-convolution, Alexandrov's theorem, Jensen's lemma) rather than from that theorem
+    as a black box. The proof of the cone-comparison theorem does not use some of the stated
+    hypotheses (geodesic, connectedness, U ≠ X, V ≠ Y); they are kept to match the paper.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Trellis verifier agents (soundness, paper-faithfulness and statement-correspondence checks on every node)"
+  notes: >-
+    Every node passed Trellis's automated soundness, paper-faithfulness and Lean/natural-language
+    correspondence reviews. No human review of the Lean statements against the paper has been
+    recorded yet.
+
+alignment:
+  namespace: "Superposition"
+  statements:
+    - source: "Theorem (Superposition in disjoint variables for the infinity Laplacian), subsolutions"
+      lean: "Superposition.infsuper_subsolution"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from infsuper_subsolution."
+    - source: "Same theorem, supersolutions"
+      lean: "Superposition.infsuper_supersolution"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from infsuper_supersolution."
+    - source: "Same theorem, solutions"
+      lean: "Superposition.infsuper_solution"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from infsuper_solution."
+    - source: "Theorem (Subsolutions of sub-additive equations)"
+      lean: "Superposition.superposition_common_subsolution"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from superposition_common_subsolution."
+    - source: "Theorem (Superposition for comparison with cones), from above"
+      lean: "Superposition.superposition_cone_above"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from superposition_cone_above; the paper states this case and asserts the others."
+    - source: "Same theorem, from below"
+      lean: "Superposition.superposition_cone_below"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from superposition_cone_below."
+    - source: "Same theorem, from both sides"
+      lean: "Superposition.superposition_cone_both"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from superposition_cone_both."
+
+acknowledgements: >-
+  Built on Mathlib. Produced with Trellis (github.com/wpegden/trellis) and Claude (Anthropic).

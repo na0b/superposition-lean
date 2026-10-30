@@ -1,5 +1,9 @@
-import Superposition.Preamble
-import Mathlib.Analysis.InnerProductSpace.PiL2
+module
+
+public import Superposition.Preamble
+public import Mathlib.Analysis.InnerProductSpace.PiL2
+
+@[expose] public section
 open Filter
 open scoped Topology
 

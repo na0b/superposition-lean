@@ -1,16 +1,20 @@
-import Superposition.EuclidHessian
-import Mathlib.Analysis.Calculus.Gradient.Basic
-import Mathlib.Analysis.InnerProductSpace.PiL2
-import Mathlib.LinearAlgebra.Matrix.PosDef
-import Mathlib.Analysis.Calculus.ContDiff.Basic
-import Mathlib.Topology.Semicontinuity.Basic
-import Mathlib.Analysis.Convex.Function
-import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
-import Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace
-import Mathlib.Analysis.Asymptotics.Defs
-import Mathlib.Topology.EMetricSpace.Lipschitz
-import Mathlib.Analysis.Calculus.FDeriv.Symmetric
-import Mathlib.Analysis.Calculus.MeanValue
+module
+
+public import Superposition.EuclidHessian
+public import Mathlib.Analysis.Calculus.Gradient.Basic
+public import Mathlib.Analysis.InnerProductSpace.PiL2
+public import Mathlib.LinearAlgebra.Matrix.PosDef
+public import Mathlib.Analysis.Calculus.ContDiff.Basic
+public import Mathlib.Topology.Semicontinuity.Basic
+public import Mathlib.Analysis.Convex.Function
+public import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
+public import Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace
+public import Mathlib.Analysis.Asymptotics.Defs
+public import Mathlib.Topology.EMetricSpace.Lipschitz
+public import Mathlib.Analysis.Calculus.FDeriv.Symmetric
+public import Mathlib.Analysis.Calculus.MeanValue
+
+@[expose] public section
 open Matrix Metric MeasureTheory Filter Asymptotics Set
 open scoped Topology
 

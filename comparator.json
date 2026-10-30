@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Superposition.infsuper_subsolution",
+    "Superposition.infsuper_supersolution",
+    "Superposition.infsuper_solution",
+    "Superposition.superposition_common_subsolution",
+    "Superposition.superposition_cone_above",
+    "Superposition.superposition_cone_below",
+    "Superposition.superposition_cone_both"
+  ],
+  "definition_names": [],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}

@@ -75,14 +75,28 @@ lake build
 lake env lean Axioms.lean # print the axioms used by each main theorem
 ```
 
-The project is pinned to Lean `v4.33.0` and Mathlib commit `db584cd6d46c92f209a44c0f1c829460d327499d`. Continuous integration rebuilds the project and checks the axioms on every push.
+The project is pinned to Lean `v4.35.0-rc2` and the matching Mathlib release `v4.35.0-rc2`, and every file uses Lean's module system. Continuous integration rebuilds the project and checks the axioms on every push.
+
+## Palomar
+
+The repository is laid out for the [Palomar](https://palomar-registry.org/) registry. [`Challenge.lean`](Challenge.lean) is the statement of record: it imports only Mathlib, restates the definitions the main results use, and states the main results with `sorry`. The same definitions live in [`Superposition/Defs.lean`](Superposition/Defs.lean), generated from the same source and textually identical, so the two elaborate to the same terms. [`Solution.lean`](Solution.lean) proves the Challenge statements from the development. [`comparator.json`](comparator.json) tells [Comparator](https://github.com/leanprover/comparator) to check that the two agree and that only the three standard axioms are used, and [`formalization.yaml`](formalization.yaml) records provenance, authorship, automation and review. To run the check locally (Linux, needs `bwrap`):
+
+```sh
+./scripts/verify-comparator.sh
+ruby scripts/validate-formalization.rb
+```
 
 ## Layout
 
 ```
 Superposition.lean         root module, imports the main theorems
-Superposition/             one file per definition, lemma or theorem
+Superposition/             one file per lemma or theorem; the definitions used in the
+                           main statements are in Superposition/Defs.lean
 Axioms.lean                #print axioms for the main theorems
+Challenge.lean             Palomar statement of record (Mathlib imports only)
+Solution.lean              proofs of the Challenge statements
+comparator.json            Comparator configuration
+formalization.yaml         Palomar metadata
 blueprint/blueprint.tex    natural-language companion (inputs blueprint/nodes/*.tex)
 ```
 

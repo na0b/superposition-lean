@@ -1,4 +1,8 @@
-import Superposition.Preamble
+module
+
+public import Superposition.Preamble
+
+@[expose] public section
 theorem slice_left_admissible {X Y : Type*} [MetricSpace X] [MetricSpace Y]
     (U : Set X) (V : Set Y) (O : Set (WithLp 1 (X × Y))) (y0 : Y) (xh : X)
     (hO : IsOpen O) (hOb : Bornology.IsBounded O) (hOc : IsCompact (closure O))

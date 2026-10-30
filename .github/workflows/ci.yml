@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: leanprover/lean-action@v1
+      - name: Build the Palomar Challenge and Solution
+        run: lake build Challenge Solution
       - name: Check axioms of the main theorems
         run: |
           lake env lean Axioms.lean | tee axioms.txt

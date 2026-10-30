@@ -1,4 +1,8 @@
-import Superposition.Preamble
+module
+
+public import Superposition.Preamble
+
+@[expose] public section
 theorem disjointSum_continuousOn_locallyBddAbove {X Y : Type*} [MetricSpace X] [MetricSpace Y]
     (U : Set X) (V : Set Y) (u : X → ℝ) (v : Y → ℝ)
     (hu : ContinuousOn u U) (hv : ContinuousOn v V)

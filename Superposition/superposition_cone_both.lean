@@ -1,5 +1,9 @@
-import Superposition.ConeComparisonBoth
-import Superposition.superposition_cone_below
+module
+
+public import Superposition.ConeComparisonBoth
+public import Superposition.superposition_cone_below
+
+@[expose] public section
 theorem superposition_cone_both {X Y : Type*} [MetricSpace X] [MetricSpace Y]
     [ProperSpace X] [ProperSpace Y] (hX : IsGeodesicSpace X) (hY : IsGeodesicSpace Y)
     (U : Set X) (V : Set Y) (hU : IsOpenDomain U) (hV : IsOpenDomain V)

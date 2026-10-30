@@ -1,26 +1,30 @@
-import Superposition.IsDegenerateElliptic
-import Superposition.IsSubadditiveOperator
-import Superposition.IsViscositySubsolution
-import Superposition.supConvolution_properties
-import Superposition.supConvolution_jet_transfer
-import Superposition.alexandrov_convex
-import Superposition.jensen_positive_measure
-import Superposition.supConvolution_concentration
-import Superposition.quadratic_upper_bound_conditions
-import Superposition.quadratic_convex_part
-import Superposition.expansion_sub_half_sq_norm
-import Superposition.jet_twosided_to_upper
-import Mathlib.Analysis.Calculus.Gradient.Basic
-import Mathlib.Analysis.InnerProductSpace.PiL2
-import Mathlib.LinearAlgebra.Matrix.PosDef
-import Mathlib.Analysis.Calculus.ContDiff.Basic
-import Mathlib.Topology.Semicontinuity.Basic
-import Mathlib.Analysis.Convex.Function
-import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
-import Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace
-import Mathlib.Analysis.Asymptotics.Defs
-import Mathlib.Topology.EMetricSpace.Lipschitz
-import Mathlib.Analysis.Matrix.Hermitian
+module
+
+public import Superposition.IsDegenerateElliptic
+public import Superposition.IsSubadditiveOperator
+public import Superposition.IsViscositySubsolution
+public import Superposition.supConvolution_properties
+public import Superposition.supConvolution_jet_transfer
+public import Superposition.alexandrov_convex
+public import Superposition.jensen_positive_measure
+public import Superposition.supConvolution_concentration
+public import Superposition.quadratic_upper_bound_conditions
+public import Superposition.quadratic_convex_part
+public import Superposition.expansion_sub_half_sq_norm
+public import Superposition.jet_twosided_to_upper
+public import Mathlib.Analysis.Calculus.Gradient.Basic
+public import Mathlib.Analysis.InnerProductSpace.PiL2
+public import Mathlib.LinearAlgebra.Matrix.PosDef
+public import Mathlib.Analysis.Calculus.ContDiff.Basic
+public import Mathlib.Topology.Semicontinuity.Basic
+public import Mathlib.Analysis.Convex.Function
+public import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
+public import Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace
+public import Mathlib.Analysis.Asymptotics.Defs
+public import Mathlib.Topology.EMetricSpace.Lipschitz
+public import Mathlib.Analysis.Matrix.Hermitian
+
+@[expose] public section
 open Matrix Metric MeasureTheory Filter Asymptotics Set
 open scoped Topology
 

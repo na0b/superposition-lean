@@ -1,4 +1,6 @@
-import Superposition.Preamble
-/-- A domain: a nonempty, open, connected subset. (`IsConnected` includes nonemptiness.) -/
-def IsOpenDomain {X : Type*} [TopologicalSpace X] (Ω : Set X) : Prop :=
-  IsOpen Ω ∧ IsConnected Ω
+module
+
+public import Superposition.Preamble
+public import Superposition.Defs
+
+/-! `IsOpenDomain` is defined in `Superposition.Defs`. -/

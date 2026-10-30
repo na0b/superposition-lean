@@ -1,21 +1,25 @@
-import Superposition.convex_prox_map
-import Superposition.lipschitz_image_null
-import Superposition.convex_second_order_of_subgradient_expansion
-import Superposition.convex_locally_lipschitz
-import Superposition.convex_exists_subgradient
-import Mathlib.Analysis.Calculus.Gradient.Basic
-import Mathlib.Analysis.InnerProductSpace.PiL2
-import Mathlib.LinearAlgebra.Matrix.PosDef
-import Mathlib.Analysis.Calculus.ContDiff.Basic
-import Mathlib.Topology.Semicontinuity.Basic
-import Mathlib.Analysis.Convex.Function
-import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
-import Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace
-import Mathlib.Analysis.Asymptotics.Defs
-import Mathlib.Topology.EMetricSpace.Lipschitz
-import Mathlib.Analysis.Calculus.Rademacher
-import Mathlib.MeasureTheory.Function.Jacobian
-import Mathlib.Analysis.Convex.Continuous
+module
+
+public import Superposition.convex_prox_map
+public import Superposition.lipschitz_image_null
+public import Superposition.convex_second_order_of_subgradient_expansion
+public import Superposition.convex_locally_lipschitz
+public import Superposition.convex_exists_subgradient
+public import Mathlib.Analysis.Calculus.Gradient.Basic
+public import Mathlib.Analysis.InnerProductSpace.PiL2
+public import Mathlib.LinearAlgebra.Matrix.PosDef
+public import Mathlib.Analysis.Calculus.ContDiff.Basic
+public import Mathlib.Topology.Semicontinuity.Basic
+public import Mathlib.Analysis.Convex.Function
+public import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
+public import Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace
+public import Mathlib.Analysis.Asymptotics.Defs
+public import Mathlib.Topology.EMetricSpace.Lipschitz
+public import Mathlib.Analysis.Calculus.Rademacher
+public import Mathlib.MeasureTheory.Function.Jacobian
+public import Mathlib.Analysis.Convex.Continuous
+
+@[expose] public section
 open Matrix Metric MeasureTheory Filter Asymptotics Set
 open scoped Topology
 

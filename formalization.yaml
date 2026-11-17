@@ -106,13 +106,18 @@ fidelity:
     hypotheses (geodesic, connectedness, U ≠ X, V ≠ Y); they are kept to match the paper.
 
 review:
-  status: "agent-reviewed"
+  status: "author-verified"
   reviewers:
+    - "Qing Liu"
+    - "Juan J. Manfredi"
+    - "Xiaodan Zhou"
     - "Trellis verifier agents (soundness, paper-faithfulness and statement-correspondence checks on every node)"
   notes: >-
-    Every node passed Trellis's automated soundness, paper-faithfulness and Lean/natural-language
-    correspondence reviews. No human review of the Lean statements against the paper has been
-    recorded yet.
+    Qing Liu, Juan J. Manfredi and Xiaodan Zhou, the authors of the paper, read Challenge.lean (the
+    definitions and the seven theorem statements) against the paper (2026-11-17). In addition,
+    every node passed Trellis's automated soundness, paper-faithfulness and Lean/natural-language
+    correspondence reviews. The proofs were not reviewed line by line by a human; they are checked
+    by the Lean kernel and by Comparator.
 
 alignment:
   namespace: "Superposition"
